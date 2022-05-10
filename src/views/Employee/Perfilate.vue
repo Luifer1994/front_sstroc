@@ -139,6 +139,26 @@
               </div>
 
               <div class="form-group col-md-6">
+                <label for="exampleSelectGender">Estado civil</label>
+                <select
+                  class="custom-select"
+                  :class="{ 'is-invalid': errors.marital_status_id }"
+                  v-model="client.marital_status_id"
+                >
+                  <option
+                    v-for="maritalStatu in maritalStatus"
+                    :key="maritalStatu.id"
+                    :value="maritalStatu.id"
+                  >
+                    {{ maritalStatu.name }}
+                  </option>
+                </select>
+                <small v-if="errors.marital_status_id" class="text-danger">{{
+                  errors.marital_status_id[0]
+                }}</small>
+              </div>
+
+              <div class="form-group col-md-6">
                 <label for="exampleInputName1">Personas a cargo</label>
                 <input
                   type="number"
@@ -294,6 +314,42 @@
                   errors.social_security_id[0]
                 }}</small>
               </div>
+
+              <div class="form-group col-md-6">
+                <label for="exampleSelectGender">ARL</label>
+                <select
+                  class="custom-select"
+                  :class="{ 'is-invalid': errors.arl_id }"
+                  v-model="client.arl_id"
+                >
+                  <option v-for="arl in arls" :key="arl.id" :value="arl.id">
+                    {{ arl.name }}
+                  </option>
+                </select>
+                <small v-if="errors.arl_id" class="text-danger">{{
+                  errors.arl_id[0]
+                }}</small>
+              </div>
+
+              <div class="form-group col-md-6">
+                <label for="exampleSelectGender">Fondo de pensiones</label>
+                <select
+                  class="custom-select"
+                  :class="{ 'is-invalid': errors.pension_fund_id }"
+                  v-model="client.pension_fund_id"
+                >
+                  <option
+                    v-for="pensionFund in pensionFunds"
+                    :key="pensionFund.id"
+                    :value="pensionFund.id"
+                  >
+                    {{ pensionFund.name }}
+                  </option>
+                </select>
+                <small v-if="errors.pension_fund_id" class="text-danger">{{
+                  errors.pension_fund_id[0]
+                }}</small>
+              </div>
             </div>
           </div>
 
@@ -346,6 +402,9 @@ export default {
     this.getPosition();
     this.getTypeContract();
     this.getSocialSecurities();
+    this.getMaritalStatus();
+    this.getArls();
+    this.getPensionFunds();
   },
   data() {
     return {
@@ -356,6 +415,9 @@ export default {
       positions: [],
       typeContracts: [],
       socialSecurities: [],
+      maritalStatus: [],
+      arls: [],
+      pensionFunds: [],
       direccionAndContact: true,
       educationInfoFamily: false,
       infoLaboral: false,
@@ -378,6 +440,9 @@ export default {
         average_income: null,
         seniority_range: null,
         social_security_id: null,
+        marital_status_id: null,
+        arl_id: null,
+        pension_fund_id: null,
       },
       errors: {},
     };
@@ -431,6 +496,18 @@ export default {
     async getSocialSecurities() {
       const res = await createInstaceAxios.get("social-security-list");
       this.socialSecurities = res.data.data;
+    },
+    async getMaritalStatus() {
+      const res = await createInstaceAxios.get("marital-status-list");
+      this.maritalStatus = res.data.data;
+    },
+    async getArls() {
+      const res = await createInstaceAxios.get("arl-list");
+      this.arls = res.data.data;
+    },
+    async getPensionFunds() {
+      const res = await createInstaceAxios.get("pension-fund-list");
+      this.pensionFunds = res.data.data;
     },
     next() {
       this.tap++;
