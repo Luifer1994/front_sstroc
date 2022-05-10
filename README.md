@@ -1,4 +1,4 @@
-# front_sstroc
+# app
 
 ## Project setup
 ```
