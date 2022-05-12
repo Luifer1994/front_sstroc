@@ -69,7 +69,7 @@ export default {
     return {
       questions: [],
       responseQ: {
-        employee_id: 1,
+        employee_id: this.$route.params.id,
         responses: [],
       },
     };
