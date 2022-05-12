@@ -4,7 +4,9 @@
       <div class="card">
         <div class="card-body">
           <h4 class="card-title">Empleados</h4>
-          <router-link to="/employee-register" class="btn btn-primary text-right"
+          <router-link
+            to="/employee-register"
+            class="btn btn-primary text-right"
             >Registrar empleado</router-link
           >
           <div class="table-responsive">
@@ -27,10 +29,22 @@
                   <td>{{ user.document_type }}</td>
                   <td>{{ user.document_number }}</td>
                   <td>{{ user.name }} {{ user.last_name }}</td>
-                   <td>{{ user.phone }}</td>
+                  <td>{{ user.phone }}</td>
                   <td>{{ user.email }}</td>
                   <td>{{ user.gender }}</td>
-                   <td><button @click="employeePerfil(user.id)" class="btn btn-success btn-sm">Perfilar</button></td>
+                  <td>
+                    <button
+                      @click="employeePerfil(user.id)"
+                      class="btn btn-success btn-sm"
+                    >
+                      <i class="fas fa-user-cog"></i>
+                      Perfilar
+                    </button>
+                    <button  @click="employeeSurvey(user.id)" class="btn btn-danger btn-sm">
+                    <i class="fas fa-file-contract"></i>
+                    Encuestar
+                    </button>
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -79,6 +93,9 @@ export default {
   methods: {
     employeePerfil(id) {
       this.$router.push({ path: "/employee-perfilate/" + id });
+    },
+     employeeSurvey(id) {
+      this.$router.push({ path: "/employee-survey/" + id });
     },
     async getUsers(limit = null, page = null) {
       if (limit) {

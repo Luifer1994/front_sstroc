@@ -3,7 +3,7 @@
     <ul class="nav">
       <li class="nav-item">
         <router-link to="/" class="nav-link">
-          <i class="icon-head menu-icon"></i>
+          <i class="fas fa-user-tie mx-1"></i>
           <span class="menu-title">Empleados</span>
         </router-link>
       </li>
