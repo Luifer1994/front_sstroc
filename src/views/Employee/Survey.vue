@@ -34,11 +34,11 @@
                 </div>
               </div>
               <div v-else>
-              <input
-                    v-model="responseQ.responses[n].response"
-                    type="text"
-                    class="form-control form-control-sm mt-2"
-                  />
+                <input
+                  v-model="responseQ.responses[n].response"
+                  type="text"
+                  class="form-control form-control-sm mt-2"
+                />
               </div>
             </div>
           </div>
@@ -56,6 +56,7 @@
       </div>
     </div>
   </div>
+  <notifications />
 </template>
 <script>
 import { createInstaceAxios } from "../../utils/instance";
@@ -77,32 +78,67 @@ export default {
     async getQuestions() {
       const res = await createInstaceAxios.get("survey-detail/1");
       this.questions = res.data.data.questions;
-      console.log(this.questions);
       this.questions.forEach((element) => {
         this.responseQ.responses.push({
           question_id: element.id,
           response: null,
           response_id: null,
           nex: {
+            question_id: element.id,
             response: null,
             response_id: null,
           },
         });
       });
     },
-    sendResponse() {
-      //const res = await createInstaceAxios.get("survey-detail")
-      console.log(this.responseQ);
+    async sendResponse() {
+      let data = [];
+
+      this.responseQ.responses.forEach((element) => {
+        data.push({
+          question_id: element.question_id,
+          response: element.response,
+          response_id: element.response_id,
+        });
+        if (element.nex.response && element.nex.response_id) {
+          data.push({
+            question_id: element.question_id,
+            response: element.nex.response,
+            response_id: element.nex.response_id,
+          });
+        }
+      });
+      let onjetRes = {
+        employee_id: this.responseQ.employee_id,
+        responses: data,
+      };
+      try {
+        const res = await createInstaceAxios.post(
+          "survey/1/add-responses",
+          onjetRes
+        );
+        console.log(res);
+        this.getQuestions();
+      } catch (error) {
+        console.log(error.response.data.message);
+         this.$notify({
+          title: "Error",
+          text: error.response.data.message,
+          type: "error",
+        });
+      }
     },
     checkResponse(question, res) {
-      //console.log(this.responseQ);
-      console.log(res);
-      console.log(question);
-      if (res.response_id === question.multiple_responses[0].id) {
+      if (
+        res.response_id === question.multiple_responses[0].id &&
+        question.multiple_responses[0].question_next
+      ) {
+        res.nex.question_id = question.multiple_responses[0].question_id;
         res.nex.response_id = question.multiple_responses[0].question_next.id;
         res.nex.response = null;
       } else {
         res.nex = {
+          question_id: null,
           response: null,
           response_id: null,
         };
