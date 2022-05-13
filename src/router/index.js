@@ -5,6 +5,7 @@ import EmployeeList from '../views/Employee/List.vue'
 import EmployeeRegister from '../views/Employee/Register.vue'
 import EmployeePerfilate from '../views/Employee/Perfilate.vue'
 import EmployeeSurvey from '../views/Employee/Survey.vue'
+import EmployeeDetail from '../views/Employee/Detail.vue'
 
 const routes = [
   {
@@ -16,6 +17,11 @@ const routes = [
     path: '/employee-register',
     name: 'employee-register',
     component: EmployeeRegister
+  },
+  {
+    path: '/employee-detail/:id',
+    name: 'employee-detail',
+    component: EmployeeDetail
   },
   {
     path: '/employee-perfilate/:id',

@@ -38,11 +38,18 @@
                       class="btn btn-success btn-sm"
                     >
                       <i class="fas fa-user-cog"></i>
-                      Perfilar
                     </button>
-                    <button  @click="employeeSurvey(user.id)" class="btn btn-danger btn-sm">
-                    <i class="fas fa-file-contract"></i>
-                    Encuestar
+                    <button
+                      @click="employeeSurvey(user.id, user.questions_count)"
+                      class="btn btn-danger btn-sm"
+                    >
+                      <i class="fas fa-file-contract"></i>
+                    </button>
+                    <button
+                      @click="employeeDetail(user.id)"
+                      class="btn btn-primary btn-sm"
+                    >
+                      <i class="fas fa-eye"></i>
                     </button>
                   </td>
                 </tr>
@@ -74,6 +81,7 @@
       </div>
     </div>
   </div>
+  <notifications />
 </template>
 <script>
 import { createInstaceAxios } from "../../utils/instance";
@@ -94,8 +102,19 @@ export default {
     employeePerfil(id) {
       this.$router.push({ path: "/employee-perfilate/" + id });
     },
-     employeeSurvey(id) {
-      this.$router.push({ path: "/employee-survey/" + id });
+    employeeSurvey(id, count_survey) {
+      if (count_survey) {
+        this.$notify({
+          title: "Error",
+          text: "Este empleado ya realizó la encuesta",
+          type: "error",
+        });
+      } else {
+        this.$router.push({ path: "/employee-survey/" + id });
+      }
+    },
+    employeeDetail(id) {
+      this.$router.push({ path: "/employee-detail/" + id });
     },
     async getUsers(limit = null, page = null) {
       if (limit) {

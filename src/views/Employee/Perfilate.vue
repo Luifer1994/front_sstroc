@@ -392,8 +392,10 @@
 </template>
 <script>
 import { createInstaceAxios } from "../../utils/instance";
+import moment from "moment";
 export default {
   mounted() {
+    console.log(this.$route.params.id);
     this.getinfoEmploye();
     this.getCities();
     this.getHousingTypes();
@@ -450,7 +452,7 @@ export default {
   methods: {
     async getinfoEmploye() {
       const res = await createInstaceAxios.get(
-        "employee-detail/" + this.$route.params.id
+        "employee-detail-perfil/" + this.$route.params.id
       );
       if (res.data.data.perfil_sociodemographics[0]) {
         this.client = res.data.data.perfil_sociodemographics[0];
@@ -543,6 +545,11 @@ export default {
         this.infoLaboral = true;
       }
     },
+    /* formatDate(value) {
+      if (value) {
+        return moment(String(value)).format("DD/MM/YYYY");
+      }
+    }, */
   },
 };
 </script>

@@ -117,11 +117,12 @@ export default {
           "survey/1/add-responses",
           onjetRes
         );
-        console.log(res);
-        this.getQuestions();
+        if (res.data.res) {
+          this.$router.push("/");
+        }
       } catch (error) {
         console.log(error.response.data.message);
-         this.$notify({
+        this.$notify({
           title: "Error",
           text: error.response.data.message,
           type: "error",
