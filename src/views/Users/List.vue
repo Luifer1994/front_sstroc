@@ -3,11 +3,11 @@
     <div class="content-wrapper table-responsive">
       <div class="card">
         <div class="card-body">
-          <h4 class="card-title">Empleados</h4>
+          <h4 class="card-title">Usuarios</h4>
           <router-link
-            to="/employee-register"
+            to="/users-register"
             class="btn btn-primary text-right"
-            >Registrar empleado</router-link
+            >Registrar usuario</router-link
           >
           <div class="table-responsive">
             <table class="table table-striped">
@@ -20,6 +20,7 @@
                   <th>TÉLEFONO</th>
                   <th>EMAIL</th>
                   <th>GENERO</th>
+                  <th>ROL</th>
                   <th>ACCIONES</th>
                 </tr>
               </thead>
@@ -31,9 +32,10 @@
                   <td>{{ user.name }} {{ user.last_name }}</td>
                   <td>{{ user.phone }}</td>
                   <td>{{ user.email }}</td>
+                   <td>{{ user.rol }}</td>
                   <td>{{ user.gender }}</td>
                   <td>
-                    <button
+                    <!-- <button
                       @click="employeePerfil(user.id)"
                       class="btn btn-success btn-sm"
                     >
@@ -56,7 +58,7 @@
                       class="btn btn-primary btn-sm"
                     >
                       <i class="fas fa-eye"></i>
-                    </button>
+                    </button> -->
                   </td>
                 </tr>
               </tbody>
@@ -105,7 +107,7 @@ export default {
     this.getUsers();
   },
   methods: {
-    employeePerfil(id) {
+    /* employeePerfil(id) {
       this.$router.push({ path: "/employee-perfilate/" + id });
     },
     employeeUpdate(id) {
@@ -124,7 +126,7 @@ export default {
     },
     employeeDetail(id) {
       this.$router.push({ path: "/employee-detail/" + id });
-    },
+    }, */
     async getUsers(limit = null, page = null) {
       if (limit) {
         this.limit = limit;
@@ -133,7 +135,7 @@ export default {
         this.page = page;
       }
       const res = await createInstaceAxios.get(
-        "employee-list?limit=" + this.limit + "&page=" + this.page
+        "user-list?limit=" + this.limit + "&page=" + this.page
       );
       this.users = res.data.data.data;
       this.links = res.data.data.links.slice(1, res.data.data.links.length - 1);

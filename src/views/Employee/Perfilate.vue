@@ -456,6 +456,8 @@ export default {
       );
       if (res.data.data.perfil_sociodemographics[0]) {
         this.client = res.data.data.perfil_sociodemographics[0];
+        let dateB = moment(String(this.client.contract_date)).format("Y-MM-DD");
+        this.client.contract_date = dateB;
       }
     },
     async storePerfil() {
@@ -545,11 +547,6 @@ export default {
         this.infoLaboral = true;
       }
     },
-    /* formatDate(value) {
-      if (value) {
-        return moment(String(value)).format("DD/MM/YYYY");
-      }
-    }, */
   },
 };
 </script>

@@ -2,10 +2,13 @@ import { createRouter, createWebHistory } from 'vue-router'
 import axios from "axios";
 import Login from '../views/Login.vue'
 import EmployeeList from '../views/Employee/List.vue'
+import UsersList from '../views/Users/List.vue'
 import EmployeeRegister from '../views/Employee/Register.vue'
+import UsersRegister from '../views/Users/Register.vue'
 import EmployeePerfilate from '../views/Employee/Perfilate.vue'
 import EmployeeSurvey from '../views/Employee/Survey.vue'
 import EmployeeDetail from '../views/Employee/Detail.vue'
+import EmployeeUpdate from '../views/Employee/Update.vue'
 
 const routes = [
   {
@@ -24,6 +27,11 @@ const routes = [
     component: EmployeeDetail
   },
   {
+    path: '/employee-update/:id',
+    name: 'employee-update',
+    component: EmployeeUpdate
+  },
+  {
     path: '/employee-perfilate/:id',
     name: 'employee-perfilate',
     component: EmployeePerfilate
@@ -37,6 +45,16 @@ const routes = [
     path: '/login',
     name: 'login',
     component: Login
+  },
+  {
+    path: '/users-list',
+    name: 'users-list',
+    component: UsersList
+  },
+  {
+    path: '/users-register',
+    name: 'users-register',
+    component: UsersRegister
   }
 ]
 
