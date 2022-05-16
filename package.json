@@ -16,6 +16,7 @@
     "moment": "^2.29.3",
     "vue": "^3.2.13",
     "vue-form-wizard": "^0.8.4",
+    "vue-picture-swipe": "^2.1.0",
     "vue-router": "^4.0.3",
     "vue-step-wizard": "^0.1.17",
     "vuex": "^4.0.2",

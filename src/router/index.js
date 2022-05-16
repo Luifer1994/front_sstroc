@@ -9,6 +9,7 @@ import EmployeePerfilate from '../views/Employee/Perfilate.vue'
 import EmployeeSurvey from '../views/Employee/Survey.vue'
 import EmployeeDetail from '../views/Employee/Detail.vue'
 import EmployeeUpdate from '../views/Employee/Update.vue'
+import FindingsList from '../views/Findings/List.vue'
 
 const routes = [
   {
@@ -55,6 +56,11 @@ const routes = [
     path: '/users-register',
     name: 'users-register',
     component: UsersRegister
+  },
+  {
+    path: '/findings-list',
+    name: 'findings-list',
+    component: FindingsList
   }
 ]
 

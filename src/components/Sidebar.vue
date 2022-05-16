@@ -14,6 +14,13 @@
           <span class="menu-title">Usuarios</span>
         </router-link>
       </li>
+
+      <li class="nav-item">
+        <router-link to="/findings-list" class="nav-link">
+          <i class="fas fa-exclamation-circle"></i>
+          <span class="menu-title">Hallazgos</span>
+        </router-link>
+      </li>
     </ul>
   </nav>
 </template>
