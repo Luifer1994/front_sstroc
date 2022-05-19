@@ -17,6 +17,7 @@
                   {{ this.data.document_number }}
                 </h4>
               </div>
+              <button v-if="this.data.users_count == 0" @click="createUser()" class="btn btn-danger">Crear usuario para el sistema</button>
             </div>
           </div>
         </div>
@@ -285,7 +286,7 @@ export default {
     async getDetailClient(id) {
       const res = await createInstaceAxios.get("employee-detail/" + id);
       this.detail = res.data.data;
-      this.perfil = this.detail.perfil_sociodemographics[0];
+      this.perfil = this.detail.perfil_sociodemographics[0] ?? [];
       this.avatar =
         this.detail.name.charAt(0) + this.detail.last_name.charAt(0);
       this.name = this.detail.name + " " + this.detail.last_name;
@@ -301,6 +302,9 @@ export default {
       let val = (value / 1).toFixed(0).replace(".", ",");
       return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
     },
+    createUser(){
+       this.$router.push("/users-register/"+this.$route.params.id);
+    }
   },
 };
 </script>

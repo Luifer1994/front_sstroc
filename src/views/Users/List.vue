@@ -4,11 +4,11 @@
       <div class="card">
         <div class="card-body">
           <h4 class="card-title">Usuarios</h4>
-          <router-link
+         <!--  <router-link
             to="/users-register"
             class="btn btn-primary text-right"
             >Registrar usuario</router-link
-          >
+          > -->
           <div class="table-responsive">
             <table class="table table-striped">
               <thead>

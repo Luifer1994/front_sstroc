@@ -155,7 +155,6 @@ export default {
       this.findings.forEach((element) => {
         this.media.push([]);
         element.image_findings.forEach((el) => {
-          /*  var cadena2 = el.url.slice(6); */
           this.media[num].push({
             src: process.env.VUE_APP_URL + "images/" + el.url,
             thumbnail: process.env.VUE_APP_URL + "images/" + el.url,

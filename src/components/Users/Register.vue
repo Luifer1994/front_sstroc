@@ -2,73 +2,36 @@
   <form>
     <div class="form-row">
       <div class="form-group col-md-6">
-        <label for="exampleSelectGender">Tipo de documento</label>
-        <select
-          class="custom-select"
-          :class="{ 'is-invalid': errors.type_document_id }"
-          v-model="client.type_document_id"
-        >
-          <option v-for="type in typeDocuments" :key="type.id" :value="type.id">
-            {{ type.name }}
-          </option>
-        </select>
-        <small v-if="errors.type_document_id" class="text-danger">{{
-          errors.type_document_id[0]
-        }}</small>
-      </div>
-      <div class="form-group col-md-6">
-        <label for="exampleInputName1">Número de documento</label>
-        <input
-          type="number"
-          class="form-control form-control-sm"
-          placeholder="Documento..."
-          :class="{ 'is-invalid': errors.document_number }"
-          v-model="client.document_number"
-        />
-        <small v-if="errors.document_number" class="text-danger">{{
-          errors.document_number[0]
-        }}</small>
-      </div>
-      <div class="form-group col-md-6">
-        <label for="exampleSelectGender">Genero</label>
-        <select
-          class="custom-select"
-          :class="{ 'is-invalid': errors.gender_id }"
-          v-model="client.gender_id"
-        >
-          <option v-for="gender in genders" :key="gender.id" :value="gender.id">
-            {{ gender.name }}
-          </option>
-        </select>
-        <small v-if="errors.gender_id" class="text-danger">{{
-          errors.gender_id[0]
-        }}</small>
-      </div>
-      <div class="form-group col-md-6">
-        <label for="exampleInputName1">Nombres</label>
+        <label for="exampleInputName1">Nombre</label>
         <input
           type="text"
           class="form-control form-control-sm"
-          placeholder="Nombres..."
-          :class="{ 'is-invalid': errors.name }"
-          v-model="client.name"
+          placeholder="Nombre..."
+          v-model="infoClient.name"
+          disabled
         />
-        <small v-if="errors.name" class="text-danger">{{
-          errors.name[0]
-        }}</small>
       </div>
+
       <div class="form-group col-md-6">
         <label for="exampleInputName1">Apellidos</label>
         <input
           type="text"
           class="form-control form-control-sm"
           placeholder="Apellidos..."
-          v-model="client.last_name"
-          :class="{ 'is-invalid': errors.last_name }"
+          v-model="infoClient.last_name"
+          disabled
         />
-        <small v-if="errors.last_name" class="text-danger">{{
-          errors.last_name[0]
-        }}</small>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label for="exampleInputName1">Número de documento</label>
+        <input
+          type="number"
+          class="form-control form-control-sm"
+          placeholder="Número de documento..."
+          v-model="infoClient.document_number"
+          disabled
+        />
       </div>
 
       <div class="form-group col-md-6">
@@ -76,35 +39,18 @@
         <input
           type="email"
           class="form-control form-control-sm"
-          placeholder="Apellidos..."
-          v-model="client.email"
-          :class="{ 'is-invalid': errors.email }"
+          placeholder="Email..."
+          v-model="infoClient.email"
+          disabled
         />
-        <small v-if="errors.email" class="text-danger">{{
-          errors.email[0]
-        }}</small>
-      </div>
-
-      <div class="form-group col-md-6">
-        <label for="exampleInputName1">Télefono</label>
-        <input
-          type="email"
-          class="form-control form-control-sm"
-          placeholder="Apellidos..."
-          v-model="client.phone"
-          :class="{ 'is-invalid': errors.phone }"
-        />
-        <small v-if="errors.phone" class="text-danger">{{
-          errors.phone[0]
-        }}</small>
       </div>
 
       <div class="form-group col-md-6">
         <label for="exampleInputName1">Contraseña</label>
         <input
-          type="email"
+          type="password"
           class="form-control form-control-sm"
-          placeholder="Apellidos..."
+          placeholder="Contraseña..."
           v-model="client.password"
           :class="{ 'is-invalid': errors.password }"
         />
@@ -136,32 +82,30 @@
   <button @click="regsiterUser()" type="button" class="btn btn-primary mx-2">
     Registrar
   </button>
+  <notifications />
 </template>
 <script>
 import { createInstaceAxios } from "../../utils/instance";
 export default {
   data() {
     return {
-      typeDocuments: [],
-      genders: [],
       rols: [],
-      client: {
+      infoClient: {
         name: null,
         last_name: null,
-        phone: null,
-        type_document_id: null,
         document_number: null,
-        rol_id: null,
-        gender_id: null,
         email: null,
+      },
+      client: {
+        employee_id: this.$route.params.id,
+        rol_id: null,
         password: null,
       },
       errors: {},
     };
   },
   mounted() {
-    this.getTypeDocuments();
-    this.getGenders();
+    this.getDetailClient(this.$route.params.id);
     this.getRols();
   },
   methods: {
@@ -173,19 +117,25 @@ export default {
         }
       } catch (er) {
         this.errors = er.response.data;
+        if (er.response.data.employee_id) {
+          this.$notify({
+            title: "Error",
+            text: "Este este empleado ya tiene un usuario asignado",
+            type: "error",
+          });
+        }
       }
-    },
-    async getTypeDocuments() {
-      const res = await createInstaceAxios.get("document-type-list");
-      this.typeDocuments = res.data.data;
-    },
-    async getGenders() {
-      const res = await createInstaceAxios.get("gender-list");
-      this.genders = res.data.data;
     },
     async getRols() {
       const res = await createInstaceAxios.get("rol-list");
       this.rols = res.data.data;
+    },
+    async getDetailClient(id) {
+      const res = await createInstaceAxios.get("employee-detail/" + id);
+      this.infoClient.name = res.data.data.name;
+      this.infoClient.last_name = res.data.data.last_name;
+      this.infoClient.email = res.data.data.email;
+      this.infoClient.document_number = res.data.data.document_number;
     },
   },
 };
