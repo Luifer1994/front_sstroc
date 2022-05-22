@@ -10,6 +10,9 @@ import EmployeeSurvey from '../views/Employee/Survey.vue'
 import EmployeeDetail from '../views/Employee/Detail.vue'
 import EmployeeUpdate from '../views/Employee/Update.vue'
 import FindingsList from '../views/Findings/List.vue'
+import FindingsRegister from '../views/Findings/Register.vue'
+import FindingsDetail from '../views/Findings/Detail.vue'
+import  TracingRegister from '../views/Tracing/Register.vue'
 
 const routes = [
   {
@@ -61,6 +64,21 @@ const routes = [
     path: '/findings-list',
     name: 'findings-list',
     component: FindingsList
+  },
+  {
+    path: '/findings-register',
+    name: 'findings-register',
+    component: FindingsRegister
+  },
+  {
+    path: '/findings-detail/:id',
+    name: 'findings-detail',
+    component: FindingsDetail
+  },
+  {
+    path: '/tracing-register/:id',
+    name: 'tracing-register',
+    component: TracingRegister
   }
 ]
 
