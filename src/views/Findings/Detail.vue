@@ -92,8 +92,8 @@
                     <!-- <i class="icon-attachment"></i> -->
                     Creado por:
                     <h4 v-if="tracing.user.employee">
-                      {{ tracind.user.employee.name }}
-                      {{ tracind.user.employee.last_name }}
+                      {{ tracing.user.employee.name }}
+                      {{ tracing.user.employee.last_name }}
                     </h4>
                     <h4>{{ tracing.description }}</h4>
                     <p>
