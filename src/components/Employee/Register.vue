@@ -76,7 +76,7 @@
         <input
           type="date"
           class="form-control form-control-sm"
-          placeholder="Apellidos..."
+          placeholder="Fecha de nacimiento..."
           v-model="client.birth_date"
           :class="{ 'is-invalid': errors.birth_date }"
         />
@@ -90,7 +90,7 @@
         <input
           type="email"
           class="form-control form-control-sm"
-          placeholder="Apellidos..."
+          placeholder="Email..."
           v-model="client.email"
           :class="{ 'is-invalid': errors.email }"
         />
@@ -102,9 +102,9 @@
       <div class="form-group col-md-6">
         <label for="exampleInputName1">Télefono</label>
         <input
-          type="email"
+          type="number"
           class="form-control form-control-sm"
-          placeholder="Apellidos..."
+          placeholder="Télefono..."
           v-model="client.phone"
           :class="{ 'is-invalid': errors.phone }"
         />

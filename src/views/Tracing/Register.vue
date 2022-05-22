@@ -12,7 +12,7 @@
                 <input
                   type="email"
                   class="form-control form-control-sm"
-                  placeholder="Apellidos..."
+                  placeholder="Descripción..."
                   v-model="finding.description"
                   :class="{ 'is-invalid': errors.description }"
                 />
@@ -22,7 +22,7 @@
               </div>
 
               <div class="form-group col-md-6">
-                <label for="exampleInputName1">Imagenes</label>
+                <label for="exampleInputName1">Evidencias</label>
                 <input
                   accept="image/jpeg,jpg,png"
                   type="file"
@@ -41,10 +41,25 @@
                 <textarea
                   type="email"
                   class="form-control form-control-sm"
-                  placeholder="Descripciòn larga..."
+                  placeholder="Descripción larga..."
                   v-model="finding.long_description"
                 />
               </div>
+
+              <div class="form-group col-md-4">
+              <div class="text-center row" v-if="previewImage.length > 0">
+                <div class="col-sm col" v-for="img in previewImage" :key="img">
+                  <img :src="img.url" class="rounded preview-image" alt="..." />
+                  <br />
+                  <button
+                    @click="removeImage(img.url)"
+                    class="btn btn-danger btn-sm"
+                  >
+                    <i class="fas fa-trash-alt"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
             </div>
           </form>
           <router-link to="/" type="button" class="btn btn-danger">
@@ -60,18 +75,14 @@
           </button>
 
           <button
-          v-else
+            v-else
             @click="regsiterFinding()"
             type="button"
             class="btn btn-primary mx-2"
           >
             Registrar
           </button>
-          <img
-            v-if="previewImage"
-            :src="previewImage"
-            class="uploading-image"
-          />
+          
         </div>
       </div>
     </div>
@@ -86,7 +97,7 @@ export default {
     return {
       areas: [],
       disabled: false,
-      previewImage: null,
+        previewImage: [],
       finding: {
         description: null,
         long_description: null,
@@ -104,7 +115,7 @@ export default {
           this.finding
         );
         if (res.data.res) {
-          this.$router.push("/findings-detail/"+this.$route.params.id);
+          this.$router.push("/findings-detail/" + this.$route.params.id);
         }
       } catch (er) {
         this.errors = er.response.data;
@@ -118,10 +129,14 @@ export default {
       });
     },
     async returnImage(file) {
-          this.disabled = true;
+      this.disabled = true;
       const res = await UploadFile(file);
-      this.finding.images.push({ url: res });
-       this.disabled = false;
+      this.previewImage.push({ url: res });
+      this.disabled = false;
+    },
+    removeImage(e) {
+      console.log(e);
+      this.previewImage = this.previewImage.filter((item) => item.url !== e);
     },
   },
 };

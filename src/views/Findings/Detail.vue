@@ -22,7 +22,7 @@
               class="btn btn-primary btn-sm"
               >Crear reguimiento</router-link
             >
-            <div class="container mt-3">
+            <div class="mt-3">
               <div class="row">
                 <div class="col-sm">
                   Fecha de creación:
@@ -55,12 +55,12 @@
                 <div class="col-sm">
                   Descripción:
                   <br />
-                  <h5>{{ finding.description }}</h5>
+                  <h5 class="text-justify">{{ finding.description }}</h5>
                 </div>
                 <div class="col-9">
                   Descripción larga:
                   <br />
-                  <h5>{{ finding.long_description }}</h5>
+                  <h5 class="text-justify">{{ finding.long_description }}</h5>
                 </div>
                 <div class="col-12 evidence">
                   Evidencias:
@@ -78,7 +78,7 @@
               <h3>Seguimientos de hallazgo</h3>
             </div>
 
-            <div class="container">
+            
               <div class="timeline">
                 <div
                   v-for="(tracing, index) in tracings"
@@ -89,7 +89,6 @@
                     {{ formatDate(tracing.created_at) }}
                   </div>
                   <div class="timeline-content shadow bg-white">
-                    <!-- <i class="icon-attachment"></i> -->
                     Creado por:
                     <h4 v-if="tracing.user.employee">
                       {{ tracing.user.employee.name }}
@@ -107,7 +106,7 @@
                   </div>
                 </div>
               </div>
-            </div>
+            
           </div>
         </div>
       </div>
@@ -380,4 +379,5 @@ export default {
   border-radius: 5%;
   margin: 2px;
 }
+
 </style>

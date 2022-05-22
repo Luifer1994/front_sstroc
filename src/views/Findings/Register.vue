@@ -5,64 +5,78 @@
         <div class="card-body">
           <h4 class="card-title">Registrar hallazgo</h4>
 
-          <form>
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                <label for="exampleSelectGender">Area</label>
-                <select
-                  class="custom-select"
-                  :class="{ 'is-invalid': errors.area_id }"
-                  v-model="finding.area_id"
-                >
-                  <option v-for="area in areas" :key="area.id" :value="area.id">
-                    {{ area.name }}
-                  </option>
-                </select>
-                <small v-if="errors.area_id" class="text-danger">{{
-                  errors.area_id[0]
-                }}</small>
-              </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="exampleSelectGender">Area</label>
+              <select
+                class="custom-select"
+                :class="{ 'is-invalid': errors.area_id }"
+                v-model="finding.area_id"
+              >
+                <option v-for="area in areas" :key="area.id" :value="area.id">
+                  {{ area.name }}
+                </option>
+              </select>
+              <small v-if="errors.area_id" class="text-danger">{{
+                errors.area_id[0]
+              }}</small>
+            </div>
 
-              <div class="form-group col-md-6">
-                <label for="exampleInputName1">Descripción</label>
-                <input
-                  type="email"
-                  class="form-control form-control-sm"
-                  placeholder="Apellidos..."
-                  v-model="finding.description"
-                  :class="{ 'is-invalid': errors.description }"
-                />
-                <small v-if="errors.description" class="text-danger">{{
-                  errors.description[0]
-                }}</small>
-              </div>
+            <div class="form-group col-md-6">
+              <label for="exampleInputName1">Descripción</label>
+              <input
+                type="email"
+                class="form-control form-control-sm"
+                placeholder="Descripción..."
+                v-model="finding.description"
+                :class="{ 'is-invalid': errors.description }"
+              />
+              <small v-if="errors.description" class="text-danger">{{
+                errors.description[0]
+              }}</small>
+            </div>
 
-              <div class="form-group col-md-12">
-                <label for="exampleInputName1">Descripción larga</label>
-                <textarea
-                  type="email"
-                  class="form-control form-control-sm"
-                  placeholder="Descripciòn larga..."
-                  v-model="finding.long_description"
-                />
-              </div>
+            <div class="form-group col-md-12">
+              <label for="exampleInputName1">Descripción larga</label>
+              <textarea
+                type="email"
+                class="form-control form-control-sm"
+                placeholder="Descripción larga..."
+                v-model="finding.long_description"
+              />
+            </div>
 
-              <div class="form-group col-md-6">
-                <label for="exampleInputName1">Imagenes</label>
-                <input
-                  accept="image/jpeg,jpg,png"
-                  type="file"
-                  class="form-control form-control-sm"
-                  @change="uploadImage"
-                  multiple
-                  :class="{ 'is-invalid': errors.images }"
-                />
-                <small v-if="errors.images" class="text-danger">{{
-                  errors.images[0]
-                }}</small>
+            <div class="form-group col-md-6">
+              <label for="exampleInputName1">Evidencias</label>
+              <input
+                accept="image/jpeg,jpg,png"
+                type="file"
+                class="form-control form-control-sm"
+                @change="uploadImage"
+                multiple
+                :class="{ 'is-invalid': errors.images }"
+              />
+              <small v-if="errors.images" class="text-danger">{{
+                errors.images[0]
+              }}</small>
+            </div>
+
+            <div class="form-group col-md-4">
+              <div class="text-center row" v-if="previewImage.length > 0">
+                <div class="col-sm col" v-for="img in previewImage" :key="img">
+                  <img :src="img.url" class="rounded preview-image" alt="..." />
+                  <br />
+                  <button
+                    @click="removeImage(img.url)"
+                    class="btn btn-danger btn-sm"
+                  >
+                    <i class="fas fa-trash-alt"></i>
+                  </button>
+                </div>
               </div>
             </div>
-          </form>
+          </div>
+
           <router-link to="/" type="button" class="btn btn-danger">
             Cancelar
           </router-link>
@@ -84,12 +98,6 @@
           >
             Registrar
           </button>
-
-          <img
-            v-if="previewImage"
-            :src="previewImage"
-            class="uploading-image"
-          />
         </div>
       </div>
     </div>
@@ -103,7 +111,7 @@ export default {
   data() {
     return {
       areas: [],
-      previewImage: null,
+      previewImage: [],
       disabled: false,
       finding: {
         description: null,
@@ -146,8 +154,19 @@ export default {
       this.disabled = true;
       const res = await UploadFile(file);
       this.finding.images.push({ url: res });
+      this.previewImage.push({ url: res });
       this.disabled = false;
+    },
+    removeImage(e) {
+      console.log(e);
+      this.previewImage = this.previewImage.filter((item) => item.url !== e);
     },
   },
 };
 </script>
+<style>
+.preview-image {
+  width: 80px;
+  height: 80px;
+}
+</style>

@@ -68,9 +68,9 @@
                           name: 'findings-detail',
                           params: { id: finding.id },
                         }"
-                        class="btn btn-primary btn-sm"
+                        class="btn btn-danger btn-sm"
                       >
-                        Seguimiento
+                        <i class="fas fa-clipboard-list"></i>
                       </router-link>
                     </td>
                   </tr>
