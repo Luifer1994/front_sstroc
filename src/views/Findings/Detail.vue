@@ -15,6 +15,7 @@
           <div class="card-body">
             <h4 class="card-title">Detalles de hallazgo N° {{ finding.id }}</h4>
             <router-link
+              v-if="finding.status"
               :to="{
                 name: 'tracing-register',
                 params: { id: this.$route.params.id },
@@ -78,35 +79,33 @@
               <h3>Seguimientos de hallazgo</h3>
             </div>
 
-            
-              <div class="timeline">
-                <div
-                  v-for="(tracing, index) in tracings"
-                  :key="tracing.id"
-                  class="timeline-row"
-                >
-                  <div class="timeline-time text-dark">
-                    {{ formatDate(tracing.created_at) }}
-                  </div>
-                  <div class="timeline-content shadow bg-white">
-                    Creado por:
-                    <h4 v-if="tracing.user.employee">
-                      {{ tracing.user.employee.name }}
-                      {{ tracing.user.employee.last_name }}
-                    </h4>
-                    <h4>{{ tracing.description }}</h4>
-                    <p>
-                      {{ tracing.long_description }}
-                    </p>
-                    <div class="media-tracing">
-                      <vue-picture-swipe
-                        :items="mediaTracings[index]"
-                      ></vue-picture-swipe>
-                    </div>
+            <div class="timeline">
+              <div
+                v-for="(tracing, index) in tracings"
+                :key="tracing.id"
+                class="timeline-row"
+              >
+                <div class="timeline-time text-dark">
+                  {{ formatDate(tracing.created_at) }}
+                </div>
+                <div class="timeline-content shadow bg-white">
+                  Creado por:
+                  <h4 v-if="tracing.user.employee">
+                    {{ tracing.user.employee.name }}
+                    {{ tracing.user.employee.last_name }}
+                  </h4>
+                  <h4>{{ tracing.description }}</h4>
+                  <p>
+                    {{ tracing.long_description }}
+                  </p>
+                  <div class="media-tracing">
+                    <vue-picture-swipe
+                      :items="mediaTracings[index]"
+                    ></vue-picture-swipe>
                   </div>
                 </div>
               </div>
-            
+            </div>
           </div>
         </div>
       </div>
@@ -379,5 +378,4 @@ export default {
   border-radius: 5%;
   margin: 2px;
 }
-
 </style>

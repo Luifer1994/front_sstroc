@@ -68,10 +68,25 @@
                           name: 'findings-detail',
                           params: { id: finding.id },
                         }"
-                        class="btn btn-danger btn-sm"
+                        class="btn btn-primary btn-sm mr-1"
                       >
                         <i class="fas fa-clipboard-list"></i>
                       </router-link>
+                      <button
+                      v-if="finding.status"
+                        @click="showAlert(finding.id)"
+                        class="btn btn-danger btn-sm"
+                      >
+                        <i class="fas fa-lock"></i>
+                      </button>
+
+                       <button
+                       v-else
+                       disabled
+                        class="btn btn-danger btn-sm"
+                      >
+                        <i class="fas fa-lock"></i>
+                      </button>
                     </td>
                   </tr>
                 </tbody>
@@ -153,6 +168,24 @@ export default {
       });
       this.links = res.data.data.links.slice(1, res.data.data.links.length - 1);
     },
+    showAlert(id) {
+      // Use sweetalert2
+      console.log(id);
+      this.$swal({
+        title: "¿Estas seguro que quieres cerrar este hallazgo?",
+        text: "Al cerrarlo no podrás hacer mas seguimiento del mismo!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Si, cerrar!",
+        cancelButtonText:"Cancelar"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.closed(id);
+        }
+      });
+    },
     next(num) {
       this.media = [];
       this.getFindings(this.limit, num);
@@ -161,6 +194,29 @@ export default {
       moment.locale("es");
       if (value) {
         return moment(String(value)).format("LL");
+      }
+    },
+    async closed(id) {
+      const Toast = this.$swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+      });
+      try {
+        const res = await createInstaceAxios.put("finding-closed/" + id);
+
+        Toast.fire({
+          icon: "success",
+          title: res.data.message,
+        });
+        this.getFindings();
+      } catch (error) {
+        Toast.fire({
+          icon: "warning",
+          title: error.response.message,
+        });
       }
     },
   },

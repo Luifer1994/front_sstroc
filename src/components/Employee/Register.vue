@@ -147,16 +147,31 @@ export default {
   },
   methods: {
     async regsiterClient() {
+      const Toast = this.$swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+      });
       try {
         const res = await createInstaceAxios.post(
           "employee-register",
           this.client
         );
         if (res.data.res) {
+          Toast.fire({
+            icon: "success",
+            title: res.data.message,
+          });
           this.$router.push("/");
         }
       } catch (er) {
         this.errors = er.response.data;
+        Toast.fire({
+          icon: "warning",
+          title: "Error al crear el registro",
+        });
       }
     },
     async getTypeDocuments() {

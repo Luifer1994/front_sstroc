@@ -127,17 +127,31 @@ export default {
   },
   methods: {
     async regsiterFinding() {
+      const Toast = this.$swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+      });
       try {
         const res = await createInstaceAxios.post(
           "finding-register",
           this.finding
         );
         if (res.data.res) {
+          Toast.fire({
+            icon: "success",
+            title: res.data.message,
+          });
           this.$router.push("/findings-list");
         }
       } catch (er) {
         this.errors = er.response.data;
-        console.log(this.errors);
+        Toast.fire({
+          icon: "warning",
+          title: "Error al crear el registro",
+        });
       }
     },
     async getAreas() {

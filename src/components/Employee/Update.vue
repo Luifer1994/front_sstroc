@@ -149,23 +149,38 @@ export default {
   },
   methods: {
     async updateClient() {
+      const Toast = this.$swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+      });
       try {
         const res = await createInstaceAxios.put(
           "employee-update/" + this.$route.params.id,
           this.client
         );
         if (res.data.res) {
+          Toast.fire({
+            icon: "success",
+            title: res.data.message,
+          });
           this.$router.push("/");
         }
       } catch (er) {
         this.errors = er.response.data;
+        Toast.fire({
+          icon: "warning",
+          title: "Error al crear el registro",
+        });
       }
     },
     async getinfoEmploye() {
       const res = await createInstaceAxios.get(
         "employee-detail/" + this.$route.params.id
       );
-     
+
       this.client = res.data.data;
       let dateB = moment(String(this.client.birth_date)).format("Y-MM-DD");
       this.client.birth_date = dateB;

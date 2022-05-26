@@ -47,19 +47,27 @@
               </div>
 
               <div class="form-group col-md-4">
-              <div class="text-center row" v-if="previewImage.length > 0">
-                <div class="col-sm col" v-for="img in previewImage" :key="img">
-                  <img :src="img.url" class="rounded preview-image" alt="..." />
-                  <br />
-                  <button
-                    @click="removeImage(img.url)"
-                    class="btn btn-danger btn-sm"
+                <div class="text-center row" v-if="previewImage.length > 0">
+                  <div
+                    class="col-sm col"
+                    v-for="img in previewImage"
+                    :key="img"
                   >
-                    <i class="fas fa-trash-alt"></i>
-                  </button>
+                    <img
+                      :src="img.url"
+                      class="rounded preview-image"
+                      alt="..."
+                    />
+                    <br />
+                    <button
+                      @click="removeImage(img.url)"
+                      class="btn btn-danger btn-sm"
+                    >
+                      <i class="fas fa-trash-alt"></i>
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
             </div>
           </form>
           <router-link to="/" type="button" class="btn btn-danger">
@@ -82,7 +90,6 @@
           >
             Registrar
           </button>
-          
         </div>
       </div>
     </div>
@@ -97,7 +104,7 @@ export default {
     return {
       areas: [],
       disabled: false,
-        previewImage: [],
+      previewImage: [],
       finding: {
         description: null,
         long_description: null,
@@ -109,17 +116,31 @@ export default {
   },
   methods: {
     async regsiterFinding() {
+      const Toast = this.$swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+      });
       try {
         const res = await createInstaceAxios.post(
           "tracing-register",
           this.finding
         );
         if (res.data.res) {
+          Toast.fire({
+            icon: "success",
+            title: res.data.message,
+          });
           this.$router.push("/findings-detail/" + this.$route.params.id);
         }
       } catch (er) {
         this.errors = er.response.data;
-        console.log(this.errors);
+        Toast.fire({
+          icon: "warning",
+          title: "Error al crear el registro",
+        });
       }
     },
 
@@ -131,6 +152,7 @@ export default {
     async returnImage(file) {
       this.disabled = true;
       const res = await UploadFile(file);
+      this.finding.images.push({ url: res });
       this.previewImage.push({ url: res });
       this.disabled = false;
     },

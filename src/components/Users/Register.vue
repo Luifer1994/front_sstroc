@@ -110,12 +110,27 @@ export default {
   },
   methods: {
     async regsiterUser() {
+      const Toast = this.$swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+      });
       try {
         const res = await createInstaceAxios.post("user-register", this.client);
         if (res.data.res) {
+          Toast.fire({
+            icon: "success",
+            title: res.data.message,
+          });
           this.$router.push("/users-list");
         }
       } catch (er) {
+        Toast.fire({
+          icon: "warning",
+          title: "Error al crear el registro",
+        });
         this.errors = er.response.data;
         if (er.response.data.employee_id) {
           this.$notify({
