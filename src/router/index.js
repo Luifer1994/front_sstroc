@@ -13,6 +13,7 @@ import FindingsList from '../views/Findings/List.vue'
 import FindingsRegister from '../views/Findings/Register.vue'
 import FindingsDetail from '../views/Findings/Detail.vue'
 import  TracingRegister from '../views/Tracing/Register.vue'
+import IdentificationRisk from '../views/IdentificationRisk/Form.vue'
 
 const routes = [
   {
@@ -79,6 +80,11 @@ const routes = [
     path: '/tracing-register/:id',
     name: 'tracing-register',
     component: TracingRegister
+  },
+  {
+    path: '/identification-risk',
+    name: 'identification-risk',
+    component: IdentificationRisk
   }
 ]
 
@@ -117,7 +123,7 @@ router.beforeEach((to, from, next) => {
   if (isLogin && validateSesion()) {
     next();
   } else {
-    if (to.name === "login") {
+    if (to.name === "login" || to.name === "identification-risk") {
       next();
     } else {
       next("login");
