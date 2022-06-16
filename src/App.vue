@@ -12,7 +12,8 @@
       $route.name === 'findings-list' ||
       $route.name === 'findings-register' ||
       $route.name === 'findings-detail' ||
-      $route.name === 'tracing-register'
+      $route.name === 'tracing-register' ||
+      $route.name == 'home'
     "
   ></Nav>
   <div v-if=" $route.name === 'employee-list' ||
@@ -26,7 +27,8 @@
       $route.name === 'findings-list' ||
       $route.name === 'findings-register' ||
       $route.name === 'findings-detail' ||
-      $route.name === 'tracing-register'" class="container-fluid page-body-wrapper">
+      $route.name === 'tracing-register' ||
+        $route.name == 'home'" class="container-fluid page-body-wrapper">
     <sidebar></sidebar>
     <router-view />
   </div>

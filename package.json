@@ -10,6 +10,7 @@
   "dependencies": {
     "@kyvg/vue3-notification": "^2.3.4",
     "@vuepic/vue-datepicker": "^3.1.1",
+    "apexcharts": "^3.35.3",
     "axios": "^0.26.1",
     "core-js": "^3.8.3",
     "firebase": "^9.8.1",
@@ -22,6 +23,7 @@
     "vue-router": "^4.0.3",
     "vue-step-wizard": "^0.1.17",
     "vue-sweetalert2": "^5.0.5",
+    "vue3-apexcharts": "^1.4.1",
     "vuex": "^4.0.2",
     "vuex-persist": "^3.1.3"
   },

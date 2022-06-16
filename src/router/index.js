@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import axios from "axios";
 import Login from '../views/Login.vue'
+import Home from '../views/HomeView.vue'
 import EmployeeList from '../views/Employee/List.vue'
 import UsersList from '../views/Users/List.vue'
 import EmployeeRegister from '../views/Employee/Register.vue'
@@ -18,6 +19,11 @@ import IdentificationRisk from '../views/IdentificationRisk/Form.vue'
 const routes = [
   {
     path: '/',
+    name: 'home',
+    component: Home
+  },
+  {
+    path: '/employee-list',
     name: 'employee-list',
     component: EmployeeList
   },
