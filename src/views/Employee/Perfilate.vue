@@ -355,7 +355,7 @@
 
           <router-link
             v-if="tap === 1"
-            to="/"
+            to="/employee-list"
             type="button"
             class="btn btn-danger"
           >
@@ -478,7 +478,7 @@ export default {
             icon: "success",
             title: res.data.message,
           });
-          this.$router.push("/");
+          this.$router.push("/employee-list");
         }
       } catch (er) {
         this.errors = er.response.data;

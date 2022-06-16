@@ -114,7 +114,7 @@
       </div>
     </div>
   </form>
-  <router-link to="/" type="button" class="btn btn-danger">
+  <router-link to="/employee-list" type="button" class="btn btn-danger">
     Cancelar
   </router-link>
   <button @click="regsiterClient()" type="button" class="btn btn-primary mx-2">
@@ -164,7 +164,7 @@ export default {
             icon: "success",
             title: res.data.message,
           });
-          this.$router.push("/");
+          this.$router.push("/employee-list");
         }
       } catch (er) {
         this.errors = er.response.data;

@@ -42,7 +42,7 @@
               </div>
             </div>
           </div>
-          <router-link to="/" type="button" class="btn btn-danger">
+          <router-link to="/employee-list" type="button" class="btn btn-danger">
             Cancelar
           </router-link>
           <button
@@ -118,7 +118,7 @@ export default {
           onjetRes
         );
         if (res.data.res) {
-          this.$router.push("/");
+          this.$router.push("/employee-list");
         }
       } catch (error) {
         console.log(error.response.data.message);

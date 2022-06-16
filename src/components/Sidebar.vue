@@ -1,8 +1,14 @@
 <template>
   <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <ul class="nav">
-      <li class="nav-item">
+    <li class="nav-item">
         <router-link to="/" class="nav-link">
+          <i class="fa fa-home" aria-hidden="true"></i>
+          <span class="menu-title">Home</span>
+        </router-link>
+      </li>
+      <li class="nav-item">
+        <router-link to="/employee-list" class="nav-link">
           <i class="fas fa-user-tie mx-1"></i>
           <span class="menu-title">Empleados</span>
         </router-link>

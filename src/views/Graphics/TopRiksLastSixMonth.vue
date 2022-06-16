@@ -26,6 +26,7 @@ export default {
       chartOptions: {
         chart: {
           height: 300,
+          width: '100%',
           type: "bar",
         },
         plotOptions: {
@@ -59,7 +60,7 @@ export default {
         xaxis: {
           labels: {
             rotate: -45,
-            show: false,
+            show: true,
                 formatter: function (val) {
                   return val;
                 }
