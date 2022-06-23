@@ -15,6 +15,9 @@ import FindingsRegister from '../views/Findings/Register.vue'
 import FindingsDetail from '../views/Findings/Detail.vue'
 import  TracingRegister from '../views/Tracing/Register.vue'
 import IdentificationRisk from '../views/IdentificationRisk/Form.vue'
+import RegisterMatrixRisk from '../views/MatrixRisk/Register.vue'
+
+import ListMatrixRisk from '../views/MatrixRisk/Index.vue'
 
 const routes = [
   {
@@ -91,6 +94,16 @@ const routes = [
     path: '/identification-risk',
     name: 'identification-risk',
     component: IdentificationRisk
+  },
+  {
+    path: '/matrix-risk-index',
+    name: 'matrix-risk-index',
+    component: ListMatrixRisk
+  },
+  {
+    path: '/matrix-risk-register',
+    name: 'matrix-risk-register',
+    component: RegisterMatrixRisk
   }
 ]
 
