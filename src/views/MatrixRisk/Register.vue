@@ -315,7 +315,7 @@ export default {
             icon: "success",
             title: res.data.message,
           });
-          this.$router.push("/");
+          this.$router.push("/matrix-risk-index");
         }
       } catch (er) {
         this.errors = er.response.data;

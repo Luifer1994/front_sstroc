@@ -9,7 +9,7 @@
             class="btn btn-primary text-right"
             >Crear nuevo matriz</router-link
           >
-         <!--  <div v-if="!findings" class="d-flex justify-content-center mt-4">
+          <div v-if="!matrix" class="d-flex justify-content-center mt-4">
             <div
               class="spinner-border text-primary"
               style="width: 100px; height: 100px"
@@ -24,68 +24,76 @@
                 <thead>
                   <tr>
                     <th>ID</th>
-                    <th>DESCRIPCIÓN</th>
-                    <th>CREADO POR</th>
+                    <th>CARGO</th>
+                    <th>PROCESO</th>
                     <th>AREA</th>
+                    <th>TAREA</th>
+                    <th>RIESGO</th>
                     <th>FECHA_CREACIÓN</th>
-                    <th>ESTADO</th>
-                    <th>EVIDENCIAS</th>
+                    <th>CLASIFICACIÓN</th>
                     <th>ACCIONES</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr v-for="(finding, index) in findings" :key="finding.id">
+                  <tr v-for="(item, index) in matrix" :key="item.id">
                     <td>
-                      {{ finding.id }}
+                      {{ item.id }}
                     </td>
 
                     <td>
-                      {{ finding.description }}
-                      <p class="long-text">{{ finding.long_description }}</p>
+                      {{ item.position.name }}
                     </td>
 
-                    <td v-if="finding.user.employee">
-                      {{ finding.user.employee.name }}
-                      {{ finding.user.employee.last_name }}
-                    </td>
-                    <td v-else></td>
-                    <td>{{ finding.area.name }}</td>
-                    <td>{{ formatDate(finding.created_at) }}</td>
                     <td>
-                      <span v-if="finding.status" class="badge badge-success">
-                        ABIERTO
+                      {{ item.process.name }}
+                    </td>
+
+                    <td>
+                      {{ item.area.name }}
+                    </td>
+
+                    <td>
+                      {{ item.task.name }}
+                    </td>
+
+                    <td>
+                      {{ item.risk.name }}
+                    </td>
+
+                    <td>
+                      {{ formatDate(item.created_at) }}
+                    </td>
+
+                    <td>
+                      <span
+                        v-if="item.clasification == 'RUTINARIO'"
+                        class="badge badge-warning font-weight-bold"
+                      >
+                        {{ item.clasification }}
                       </span>
-                      <span v-else class="badge badge-danger"> CERRADO</span>
+                      <span v-else class="badge badge-success font-weight-bold">
+                        {{ item.clasification }}
+                      </span>
                     </td>
-                    <td>
-                      <vue-picture-swipe
-                        :items="media[index]"
-                      ></vue-picture-swipe>
-                    </td>
-                    <td>
-                      <router-link
-                        :to="{
-                          name: 'findings-detail',
-                          params: { id: finding.id },
-                        }"
-                        class="btn btn-primary btn-sm mr-1"
-                      >
-                        <i class="fas fa-clipboard-list"></i>
-                      </router-link>
-                      <button
-                      v-if="finding.status"
-                        @click="showAlert(finding.id)"
-                        class="btn btn-danger btn-sm"
-                      >
-                        <i class="fas fa-lock"></i>
-                      </button>
 
-                       <button
-                       v-else
-                       disabled
-                        class="btn btn-danger btn-sm"
+                    <td>
+                      <button
+                        class="btn btn-primary btn-sm mr-1"
+                        title="Detalle"
                       >
-                        <i class="fas fa-lock"></i>
+                        <i class="fa fa-eye" aria-hidden="true"></i>
+                      </button>
+                      <button
+                        class="btn btn-danger btn-sm mr-1"
+                        title="Crear seguimiento"
+                      >
+                        <i class="fa fa-flag" aria-hidden="true"></i>
+                      </button>
+                      <button
+                        class="btn btn-success btn-sm mr-1"
+                        title="Evaluar"
+                      >
+                        <i class="fa fa-check-circle" aria-hidden="true"></i>
                       </button>
                     </td>
                   </tr>
@@ -113,29 +121,24 @@
                 </nav>
               </div>
             </div>
-          </div> -->
+          </div>
         </div>
       </div>
     </div>
   </div>
   <notifications />
 </template>
-<!-- <script>
+<script>
 import { createInstaceAxios } from "../../utils/instance";
 import moment from "moment";
-import VuePictureSwipe from "vue-picture-swipe";
 export default {
-  name: "Users",
-  components: {
-    "vue-picture-swipe": VuePictureSwipe,
-  },
+  name: "Matrix",
   data() {
     return {
-      findings: null,
+      matrix: null,
       links: null,
       page: 1,
       limit: 10,
-      media: [],
     };
   },
   mounted() {
@@ -150,25 +153,12 @@ export default {
         this.page = page;
       }
       const res = await createInstaceAxios.get(
-        "finding-list?limit=" + this.limit + "&page=" + this.page
+        "matrix-ris-list?limit=" + this.limit + "&page=" + this.page
       );
-      this.findings = res.data.data.data;
-      let num = 0;
-      this.findings.forEach((element) => {
-        this.media.push([]);
-        element.image_findings.forEach((el) => {
-          this.media[num].push({
-            src: el.url,
-            thumbnail: el.url,
-            w: 600,
-            h: 600,
-          });
-        });
-        num++;
-      });
+      this.matrix = res.data.data.data;
       this.links = res.data.data.links.slice(1, res.data.data.links.length - 1);
     },
-    showAlert(id) {
+    /*  showAlert(id) {
       // Use sweetalert2
       console.log(id);
       this.$swal({
@@ -179,13 +169,13 @@ export default {
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
         confirmButtonText: "Si, cerrar!",
-        cancelButtonText:"Cancelar"
+        cancelButtonText: "Cancelar",
       }).then((result) => {
         if (result.isConfirmed) {
           this.closed(id);
         }
       });
-    },
+    }, */
     next(num) {
       this.media = [];
       this.getFindings(this.limit, num);
@@ -196,7 +186,7 @@ export default {
         return moment(String(value)).format("LL");
       }
     },
-    async closed(id) {
+    /* async closed(id) {
       const Toast = this.$swal.mixin({
         toast: true,
         position: "top-end",
@@ -218,20 +208,7 @@ export default {
           title: error.response.message,
         });
       }
-    },
+    }, */
   },
 };
-</script>-->
-<style> 
-.long-text {
-  width: 120px;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  color: dimgrey;
-  font-size: 12px;
-}
-.table td img {
-  border-radius: 0%;
-}
-</style>
+</script>
