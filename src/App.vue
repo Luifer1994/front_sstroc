@@ -15,6 +15,8 @@
       $route.name === 'tracing-register' ||
       $route.name === 'matrix-risk-register' ||
       $route.name === 'matrix-risk-index' ||
+      $route.name === 'matrix-risk-detail' ||
+      $route.name === 'matrix-risk-evaluate' ||
       $route.name === 'home'
     "
   ></Nav>
@@ -34,6 +36,8 @@
       $route.name === 'tracing-register' ||
       $route.name === 'matrix-risk-register' ||
       $route.name === 'matrix-risk-index' ||
+      $route.name === 'matrix-risk-detail' ||
+      $route.name === 'matrix-risk-evaluate' ||
       $route.name === 'home'
     "
     class="container-fluid page-body-wrapper"

@@ -77,18 +77,26 @@
                     </td>
 
                     <td>
-                      <button
+                      <router-link 
+                      :to="{
+                          name: 'matrix-risk-detail',
+                          params: { id: item.id },
+                        }"
                         class="btn btn-primary btn-sm mr-1"
                         title="Detalle"
                       >
                         <i class="fa fa-eye" aria-hidden="true"></i>
-                      </button>
-                      <button
+                      </router-link>
+                      <router-link
+                      :to="{
+                          name: 'matrix-risk-evaluate',
+                          params: { id: item.id },
+                        }"
                         class="btn btn-danger btn-sm mr-1"
                         title="Crear seguimiento"
                       >
                         <i class="fa fa-flag" aria-hidden="true"></i>
-                      </button>
+                      </router-link>
                       <button
                         class="btn btn-success btn-sm mr-1"
                         title="Evaluar"
