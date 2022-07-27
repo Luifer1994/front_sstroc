@@ -94,15 +94,22 @@
                         }"
                         class="btn btn-danger btn-sm mr-1"
                         title="Crear seguimiento"
+                        :class="{
+                          'disabled': item.evaluate_matrices_count,
+                        }"
                       >
                         <i class="fa fa-flag" aria-hidden="true"></i>
                       </router-link>
-                      <button
+                     <!--  <router-link
+                      :to="{
+                          name: 'matrix-risk-evaluate-detail',
+                          params: { id: item.id },
+                        }"
                         class="btn btn-success btn-sm mr-1"
                         title="Evaluar"
                       >
                         <i class="fa fa-check-circle" aria-hidden="true"></i>
-                      </button>
+                      </router-link> -->
                     </td>
                   </tr>
                 </tbody>

@@ -1,7 +1,7 @@
 <template>
   <div class="main-panel">
     <div class="content-wrapper table-responsive">
-      <div class="card">
+      <div class="card mb-4">
         <div class="card-body" v-if="matrix">
           <h4 class="card-title">
             Detalle matriz # {{ this.$route.params.id }}
@@ -91,14 +91,20 @@
           </div>
         </div>
       </div>
+
+      <detail-evaluation></detail-evaluation>
     </div>
   </div>
   
 </template>
 <script>
 import { createInstaceAxios } from "../../utils/instance";
+import detailEvaluation from "./DetailEvalueate.vue";
 import moment from "moment";
 export default {
+  components: {
+    detailEvaluation
+  },
   data() {
     return {
       matrix: null,

@@ -176,8 +176,8 @@
                   :class="{ 'is-invalid': errors.exists_control }"
                   v-model="newMatrix.exists_control"
                 >
-                  <option :value="false">NO</option>
-                  <option :value="true">SI</option>
+                  <option value="0">NO</option>
+                  <option value="1">SI</option>
                 </select>
                 <small v-if="errors.exists_control" class="text-danger">{{
                   errors.exists_control[0]

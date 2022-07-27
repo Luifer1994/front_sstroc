@@ -17,6 +17,7 @@
       $route.name === 'matrix-risk-index' ||
       $route.name === 'matrix-risk-detail' ||
       $route.name === 'matrix-risk-evaluate' ||
+      $route.name === 'matrix-risk-evaluate-detail' ||
       $route.name === 'home'
     "
   ></Nav>
@@ -38,6 +39,7 @@
       $route.name === 'matrix-risk-index' ||
       $route.name === 'matrix-risk-detail' ||
       $route.name === 'matrix-risk-evaluate' ||
+      $route.name === 'matrix-risk-evaluate-detail' ||
       $route.name === 'home'
     "
     class="container-fluid page-body-wrapper"
