@@ -18,7 +18,8 @@
       $route.name === 'matrix-risk-detail' ||
       $route.name === 'matrix-risk-evaluate' ||
       $route.name === 'matrix-risk-evaluate-detail' ||
-      $route.name === 'home'
+      $route.name === 'home' ||
+      $route.name === 'events'
     "
   ></Nav>
   <div
@@ -40,6 +41,7 @@
       $route.name === 'matrix-risk-detail' ||
       $route.name === 'matrix-risk-evaluate' ||
       $route.name === 'matrix-risk-evaluate-detail' ||
+      $route.name === 'events' ||
       $route.name === 'home'
     "
     class="container-fluid page-body-wrapper"
@@ -47,9 +49,7 @@
     <sidebar></sidebar>
     <router-view />
   </div>
-  <router-view
-    v-if="$route.name === 'login' || $route.name === 'identification-risk'"
-  />
+  <router-view v-if="$route.name === 'login' || $route.name === 'identification-risk'" />
 </template>
 <script>
 import sidebar from "@/components/Sidebar";
@@ -61,4 +61,3 @@ export default {
   },
 };
 </script>
-

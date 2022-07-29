@@ -21,6 +21,7 @@ import ListMatrixRisk from '../views/MatrixRisk/Index.vue'
 import DetailMatrixRisk from '../views/MatrixRisk/Detail.vue'
 import EvaluateMatrixRisk from '../views/MatrixRisk/Evaluate.vue'
 import EvaluateMatrixRiskDetail from '../views/MatrixRisk/DetailEvalueate.vue'
+import Events from '../views/Events/Index.vue'
 
 const routes = [
   {
@@ -122,6 +123,11 @@ const routes = [
     path: '/matrix-risk-evaluate-detail/:id',
     name: 'matrix-risk-evaluate-detail',
     component: EvaluateMatrixRiskDetail
+  },
+  {
+    path: '/events',
+    name: 'events',
+    component: Events
   }
 ]
 

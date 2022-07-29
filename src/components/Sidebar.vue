@@ -34,6 +34,13 @@
           <span class="menu-title">Matrices de peligro</span>
         </router-link>
       </li>
+
+      <li class="nav-item">
+        <router-link to="/events" class="nav-link">
+          <i class="fa fa-calendar mx-2" aria-hidden="true"></i>
+          <span class="menu-title">Eventos</span>
+        </router-link>
+      </li>
     </ul>
   </nav>
 </template>
