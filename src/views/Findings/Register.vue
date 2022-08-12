@@ -39,7 +39,7 @@
             <div class="form-group col-md-12">
               <label for="exampleInputName1">Descripción larga</label>
               <textarea
-                type="email"
+                type="text"
                 class="form-control form-control-sm"
                 placeholder="Descripción larga..."
                 v-model="finding.long_description"
@@ -66,10 +66,7 @@
                 <div class="col-sm col" v-for="img in previewImage" :key="img">
                   <img :src="img.url" class="rounded preview-image" alt="..." />
                   <br />
-                  <button
-                    @click="removeImage(img.url)"
-                    class="btn btn-danger btn-sm"
-                  >
+                  <button @click="removeImage(img.url)" class="btn btn-danger btn-sm">
                     <i class="fas fa-trash-alt"></i>
                   </button>
                 </div>
@@ -81,12 +78,7 @@
             Cancelar
           </router-link>
 
-          <button
-            v-if="disabled"
-            type="button"
-            disabled
-            class="btn btn-primary mx-2"
-          >
+          <button v-if="disabled" type="button" disabled class="btn btn-primary mx-2">
             Registrar
           </button>
 
@@ -135,10 +127,7 @@ export default {
         timerProgressBar: true,
       });
       try {
-        const res = await createInstaceAxios.post(
-          "finding-register",
-          this.finding
-        );
+        const res = await createInstaceAxios.post("finding-register", this.finding);
         if (res.data.res) {
           Toast.fire({
             icon: "success",
