@@ -22,6 +22,9 @@ import DetailMatrixRisk from '../views/MatrixRisk/Detail.vue'
 import EvaluateMatrixRisk from '../views/MatrixRisk/Evaluate.vue'
 import EvaluateMatrixRiskDetail from '../views/MatrixRisk/DetailEvalueate.vue'
 import Events from '../views/Events/Index.vue'
+import DocumentList from '../views/Document/Index.vue'
+import DocumentRegister from '../views/Document/Register.vue'
+import DocumentUpdate from '../views/Document/Update.vue'
 
 const routes = [
   {
@@ -128,7 +131,22 @@ const routes = [
     path: '/events',
     name: 'events',
     component: Events
-  }
+  },
+  {
+    path: '/documents',
+    name: 'documents',
+    component: DocumentList
+  },
+  {
+    path: '/document-register',
+    name: 'document-register',
+    component: DocumentRegister
+  },
+  {
+    path: '/document-update/:id',
+    name: 'document-update',
+    component: DocumentUpdate
+  },
 ]
 
 const router = createRouter({

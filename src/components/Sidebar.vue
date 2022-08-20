@@ -41,6 +41,13 @@
           <span class="menu-title">Eventos</span>
         </router-link>
       </li>
+
+      <li class="nav-item">
+        <router-link to="/documents" class="nav-link">
+          <i class="fa fa-file mx-2" aria-hidden="true"></i>
+          <span class="menu-title">Documentos</span>
+        </router-link>
+      </li>
     </ul>
   </nav>
 </template>

@@ -19,7 +19,10 @@
       $route.name === 'matrix-risk-evaluate' ||
       $route.name === 'matrix-risk-evaluate-detail' ||
       $route.name === 'home' ||
-      $route.name === 'events'
+      $route.name === 'events' ||
+      $route.name === 'documents' ||
+      $route.name === 'document-register' ||
+      $route.name === 'document-update'
     "
   ></Nav>
   <div
@@ -42,7 +45,10 @@
       $route.name === 'matrix-risk-evaluate' ||
       $route.name === 'matrix-risk-evaluate-detail' ||
       $route.name === 'events' ||
-      $route.name === 'home'
+      $route.name === 'home' ||
+      $route.name === 'documents' ||
+      $route.name === 'document-register' ||
+      $route.name === 'document-update'
     "
     class="container-fluid page-body-wrapper"
   >

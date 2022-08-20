@@ -116,6 +116,14 @@
             >
               Registrar
             </button>
+            <button
+              @click="showAlert(new_evenet.id)"
+              v-if="new_evenet.id"
+              type="button"
+              class="btn btn-primary mx-2"
+            >
+              Eliminar
+            </button>
           </div>
         </div>
       </div>
@@ -178,6 +186,48 @@ export default {
     };
   },
   methods: {
+    showAlert(id) {
+      // Use sweetalert2
+      console.log(id);
+      this.$swal({
+        title: "¿Estas seguro que eliminar este evento?",
+        text: "Al eliminarlo no podrás recuperarlo!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Si, eliminar!",
+        cancelButtonText: "Cancelar",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.destroy(id);
+        }
+      });
+    },
+    async destroy(id) {
+      const Toast = this.$swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+      });
+      try {
+        const res = await createInstaceAxios.delete(`/event-delete/${id}`);
+        Toast.fire({
+          icon: "success",
+          title: res.data.message,
+        });
+        this.toggle();
+        this.$router.go(this.$router.currentRoute);
+      } catch (error) {
+        console.log(error);
+        Toast.fire({
+          icon: "error",
+          title: "Error al eliminar el evento",
+        });
+      }
+    },
     //create new evenet  using createInstaceAxios and async await and try catch
     async updateEvent() {
       const Toast = this.$swal.mixin({

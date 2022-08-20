@@ -42,27 +42,3 @@ export const UploadFile = (file) => {
     );
   });
 };
-/* function noty(message, typeMessage) {
-  const notyf = new window.noty({
-    position: {
-      x: "rigth",
-      y: "top",
-    },
-    types: [
-      {
-        type: "info",
-        background: "#06AB17",
-        icon: {
-          className: "fas fa-check-double",
-          tagName: "span",
-          color: "#fff",
-        },
-        dismissible: false,
-      },
-    ],
-  });
-  notyf.open({
-    type: typeMessage,
-    message: message,
-  });
-} */
