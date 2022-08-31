@@ -15,11 +15,7 @@
                   :class="{ 'is-invalid': errors.city_id }"
                   v-model="client.city_id"
                 >
-                  <option
-                    v-for="city in cities"
-                    :key="city.id"
-                    :value="city.id"
-                  >
+                  <option v-for="city in cities" :key="city.id" :value="city.id">
                     {{ city.name }}
                   </option>
                 </select>
@@ -63,9 +59,7 @@
               </div>
 
               <div class="form-group col-md-6">
-                <label for="exampleInputName1"
-                  >Contacto en caso de emergencia</label
-                >
+                <label for="exampleInputName1">Contacto en caso de emergencia</label>
                 <input
                   type="text"
                   class="form-control form-control-sm"
@@ -247,9 +241,7 @@
               </div>
 
               <div class="form-group col-md-6">
-                <label for="exampleInputName1"
-                  >Fecha de ingreso a la empresa</label
-                >
+                <label for="exampleInputName1">Fecha de ingreso a la empresa</label>
                 <input
                   type="date"
                   class="form-control form-control-sm"
@@ -277,16 +269,24 @@
               </div>
 
               <div class="form-group col-md-6">
-                <label for="exampleInputName1"
-                  >Rango de antiguedad en la empresa</label
+                <label for="exampleInputName1">Rango de antiguedad en la empresa</label>
+                <select
+                  class="custom-select"
+                  :class="{ 'is-invalid': errors.seniority_range }"
+                  v-model="client.seniority_range"
                 >
-                <input
+                  <option value="1 mes - 1 año">1 mes - 1 año</option>
+                  <option value="2 años - 5 años">2 años - 5 años</option>
+                  <option value="6 años - 10 años">6 años - 10 años</option>
+                  <option value="11 años o más">11 años o más</option>
+                </select>
+                <!-- <input
                   type="text"
                   class="form-control form-control-sm"
                   placeholder="Promedio de ingreso..."
                   :class="{ 'is-invalid': errors.seniority_range }"
                   v-model="client.seniority_range"
-                />
+                /> -->
                 <small v-if="errors.contract_date" class="text-danger">{{
                   errors.contract_date[0]
                 }}</small>

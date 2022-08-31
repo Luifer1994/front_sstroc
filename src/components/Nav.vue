@@ -1,24 +1,14 @@
 <template>
   <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
     <div
-      class="
-        text-center
-        navbar-brand-wrapper
-        d-flex
-        align-items-center
-        justify-content-center
-      "
+      class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center"
     >
-      <img
-      style="max-width:50px; min-width:50px"
-        src="../assets/logo.png"
-        alt="logo"
-      />
-      <!-- <h3 style="max-width:10px">SSTROC</h3> -->
+      <img style="max-width: 50px; min-width: 50px" src="../assets/logo.png" alt="logo" />
+      <h6 style="font-weight: bold" class="d-none d-sm-none d-md-block mx-1">
+        Centro Radio Oncólogico
+      </h6>
     </div>
-    <div
-      class="navbar-menu-wrapper d-flex align-items-center justify-content-end"
-    >
+    <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
       <button
         class="navbar-toggler navbar-toggler align-self-center"
         type="button"
@@ -46,10 +36,7 @@
             data-toggle="dropdown"
             id="profileDropdown"
           >
-            <img
-              src="https://img.icons8.com/color/48/000000/user.png"
-              alt="profile"
-            />
+            <img src="https://img.icons8.com/color/48/000000/user.png" alt="profile" />
           </a>
           <div
             class="dropdown-menu dropdown-menu-right navbar-dropdown"

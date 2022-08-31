@@ -25,7 +25,7 @@
                   <tr>
                     <th>ID</th>
                     <th>NOMBRE</th>
-                    <th>FECHA_CREACION</th>
+                    <th>FECHA_DE_CREACIÓN</th>
                     <th>ACCIONES</th>
                   </tr>
                 </thead>

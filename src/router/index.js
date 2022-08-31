@@ -25,6 +25,7 @@ import Events from '../views/Events/Index.vue'
 import DocumentList from '../views/Document/Index.vue'
 import DocumentRegister from '../views/Document/Register.vue'
 import DocumentUpdate from '../views/Document/Update.vue'
+import Cover from '../views/Cover/Index.vue'
 
 const routes = [
   {
@@ -147,6 +148,11 @@ const routes = [
     name: 'document-update',
     component: DocumentUpdate
   },
+  {
+    path: '/cover',
+    name: 'cover',
+    component: Cover
+  },
 ]
 
 const router = createRouter({
@@ -184,7 +190,7 @@ router.beforeEach((to, from, next) => {
   if (isLogin && validateSesion()) {
     next();
   } else {
-    if (to.name === "login" || to.name === "identification-risk") {
+    if (to.name === "login" || to.name === "identification-risk" || to.name === "cover") {
       next();
     } else {
       next("login");

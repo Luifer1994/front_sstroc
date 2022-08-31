@@ -17,9 +17,7 @@
                   :class="{ 'is-invalid': errors.description }"
                 />
 
-                <small v-if="errors.item" class="text-danger">{{
-                  errors.item[0]
-                }}</small>
+                <small v-if="errors.item" class="text-danger">{{ errors.item[0] }}</small>
               </div>
 
               <div class="form-group col-md-6">
@@ -50,11 +48,7 @@
                   :class="{ 'is-invalid': errors.process_id }"
                   v-model="newMatrix.process_id"
                 >
-                  <option
-                    v-for="procce in proccess"
-                    :key="procce.id"
-                    :value="procce.id"
-                  >
+                  <option v-for="procce in proccess" :key="procce.id" :value="procce.id">
                     {{ procce.name }}
                   </option>
                 </select>
@@ -64,7 +58,7 @@
               </div>
 
               <div class="form-group col-md-6">
-                <label for="exampleSelectGender">Area</label>
+                <label for="exampleSelectGender">Área</label>
                 <select
                   class="custom-select"
                   :class="{ 'is-invalid': errors.area_id }"
@@ -153,9 +147,7 @@
               </div>
 
               <div class="form-group col-md-6">
-                <label for="exampleInputName1"
-                  >Horas de exposición al día</label
-                >
+                <label for="exampleInputName1">Horas de exposición al día</label>
                 <input
                   type="text"
                   class="form-control form-control-sm"
@@ -217,21 +209,11 @@
           <router-link to="/matrix-risk-index" type="button" class="btn btn-danger">
             Cancelar
           </router-link>
-          <button
-            v-if="disabled"
-            type="button"
-            disabled
-            class="btn btn-primary mx-2"
-          >
+          <button v-if="disabled" type="button" disabled class="btn btn-primary mx-2">
             Registrar
           </button>
 
-          <button
-            v-else
-            @click="save()"
-            type="button"
-            class="btn btn-primary mx-2"
-          >
+          <button v-else @click="save()" type="button" class="btn btn-primary mx-2">
             Registrar
           </button>
         </div>
@@ -306,10 +288,7 @@ export default {
         timerProgressBar: true,
       });
       try {
-        const res = await createInstaceAxios.post(
-          "matrix-risk-create",
-          this.newMatrix
-        );
+        const res = await createInstaceAxios.post("matrix-risk-create", this.newMatrix);
         if (res.data.res) {
           Toast.fire({
             icon: "success",

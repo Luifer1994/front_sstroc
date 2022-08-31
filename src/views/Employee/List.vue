@@ -4,9 +4,7 @@
       <div class="card">
         <div class="card-body">
           <h4 class="card-title">Empleados</h4>
-          <router-link
-            to="/employee-register"
-            class="btn btn-primary text-right"
+          <router-link to="/employee-register" class="btn btn-primary text-right"
             >Registrar empleado</router-link
           >
 
@@ -26,12 +24,12 @@
                 <thead>
                   <tr>
                     <th>ID</th>
-                    <th>TYPO_DOCUMENTO</th>
-                    <th>NUM_DOCUMENTO</th>
-                    <th>NOMBRE</th>
-                    <th>TÉLEFONO</th>
+                    <th>TIPO_DOCUMENTO</th>
+                    <th>NÚMERO_DE_DOCUMENTO</th>
+                    <th>NOMBRE_Y_APELLIDOS</th>
+                    <th>TELÉFONO</th>
                     <th>EMAIL</th>
-                    <th>GENERO</th>
+                    <th>GÉNERO</th>
                     <th>ACCIONES</th>
                   </tr>
                 </thead>

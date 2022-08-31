@@ -3,7 +3,7 @@
     <div class="content-wrapper table-responsive">
       <div class="card">
         <div class="card-body">
-          <h4 class="card-title">Regsitrar empleado</h4>
+          <h4 class="card-title">Registrar empleado</h4>
           <FormRegisterEmployee></FormRegisterEmployee>
         </div>
       </div>

@@ -55,7 +55,13 @@
     <sidebar></sidebar>
     <router-view />
   </div>
-  <router-view v-if="$route.name === 'login' || $route.name === 'identification-risk'" />
+  <router-view
+    v-if="
+      $route.name === 'login' ||
+      $route.name === 'identification-risk' ||
+      $route.name === 'cover'
+    "
+  />
 </template>
 <script>
 import sidebar from "@/components/Sidebar";

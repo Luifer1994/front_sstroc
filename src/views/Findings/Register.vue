@@ -7,7 +7,7 @@
 
           <div class="form-row">
             <div class="form-group col-md-6">
-              <label for="exampleSelectGender">Area</label>
+              <label for="exampleSelectGender">Área</label>
               <select
                 class="custom-select"
                 :class="{ 'is-invalid': errors.area_id }"

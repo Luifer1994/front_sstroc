@@ -30,7 +30,7 @@
         }}</small>
       </div>
       <div class="form-group col-md-6">
-        <label for="exampleSelectGender">Genero</label>
+        <label for="exampleSelectGender">Género</label>
         <select
           class="custom-select"
           :class="{ 'is-invalid': errors.gender_id }"
@@ -53,9 +53,7 @@
           :class="{ 'is-invalid': errors.name }"
           v-model="client.name"
         />
-        <small v-if="errors.name" class="text-danger">{{
-          errors.name[0]
-        }}</small>
+        <small v-if="errors.name" class="text-danger">{{ errors.name[0] }}</small>
       </div>
       <div class="form-group col-md-6">
         <label for="exampleInputName1">Apellidos</label>
@@ -94,13 +92,11 @@
           v-model="client.email"
           :class="{ 'is-invalid': errors.email }"
         />
-        <small v-if="errors.email" class="text-danger">{{
-          errors.email[0]
-        }}</small>
+        <small v-if="errors.email" class="text-danger">{{ errors.email[0] }}</small>
       </div>
 
       <div class="form-group col-md-6">
-        <label for="exampleInputName1">Télefono</label>
+        <label for="exampleInputName1">Teléfono</label>
         <input
           type="number"
           class="form-control form-control-sm"
@@ -108,9 +104,7 @@
           v-model="client.phone"
           :class="{ 'is-invalid': errors.phone }"
         />
-        <small v-if="errors.phone" class="text-danger">{{
-          errors.phone[0]
-        }}</small>
+        <small v-if="errors.phone" class="text-danger">{{ errors.phone[0] }}</small>
       </div>
     </div>
   </form>
@@ -155,10 +149,7 @@ export default {
         timerProgressBar: true,
       });
       try {
-        const res = await createInstaceAxios.post(
-          "employee-register",
-          this.client
-        );
+        const res = await createInstaceAxios.post("employee-register", this.client);
         if (res.data.res) {
           Toast.fire({
             icon: "success",

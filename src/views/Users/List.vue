@@ -26,12 +26,12 @@
                 <thead>
                   <tr>
                     <th>ID</th>
-                    <th>TYPO_DOCUMENTO</th>
-                    <th>NUM_DOCUMENTO</th>
-                    <th>NOMBRE</th>
-                    <th>TÉLEFONO</th>
+                    <th>TIPO_DE_DOCUMENTO</th>
+                    <th>NÚMERO_DE_DOCUMENTO</th>
+                    <th>NOMBRE_Y_APELLIDOS</th>
+                    <th>TELÉFONO</th>
                     <th>EMAIL</th>
-                    <th>GENERO</th>
+                    <th>GÉNERO</th>
                     <th>ROL</th>
                     <th>ACCIONES</th>
                   </tr>
@@ -44,8 +44,8 @@
                     <td>{{ user.name }} {{ user.last_name }}</td>
                     <td>{{ user.phone }}</td>
                     <td>{{ user.email }}</td>
-                    <td>{{ user.rol }}</td>
                     <td>{{ user.gender }}</td>
+                    <td>{{ user.rol }}</td>
                     <td>
                       <!-- <button
                       @click="employeePerfil(user.id)"
