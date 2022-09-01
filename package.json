@@ -13,6 +13,7 @@
     "@fullcalendar/interaction": "^5.11.2",
     "@fullcalendar/timegrid": "^5.11.2",
     "@fullcalendar/vue3": "^5.11.2",
+    "@heroicons/vue": "^2.0.10",
     "@kyvg/vue3-notification": "^2.3.4",
     "@types/file-saver": "^2.0.5",
     "apexcharts": "^3.35.3",

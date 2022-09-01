@@ -26,6 +26,25 @@ import DocumentList from '../views/Document/Index.vue'
 import DocumentRegister from '../views/Document/Register.vue'
 import DocumentUpdate from '../views/Document/Update.vue'
 import Cover from '../views/Cover/Index.vue'
+import ArlsList from '../views/Arls/Index.vue'
+import ArlsRegister from '../views/Arls/Register.vue'
+import ArlsUpdate from '../views/Arls/Update.vue'
+// impor education levels 
+import EducationLevels from '../views/EducationLevels/Index.vue'
+import EducationLevelsRegister from '../views/EducationLevels/Register.vue'
+import EducationLevelsUpdate from '../views/EducationLevels/Update.vue'
+//Housing Type
+import HousingTypes from '../views/HousingType/Index.vue'
+import HousingTypesRegister from '../views/HousingType/Register.vue'
+import HousingTypesUpdate from '../views/HousingType/Update.vue'
+//Areas
+import Areas from '../views/Areas/Index.vue'
+import AreasRegister from '../views/Areas/Register.vue'
+import AreasUpdate from '../views/Areas/Update.vue'
+//pension fount
+import PensionFund from '../views/PensionFund/Index.vue'
+import PensionFundRegister from '../views/PensionFund/Register.vue'
+import PensionFundUpdate from '../views/PensionFund/Update.vue'
 
 const routes = [
   {
@@ -153,6 +172,81 @@ const routes = [
     name: 'cover',
     component: Cover
   },
+  {
+    path: '/arls',
+    name: 'arls',
+    component: ArlsList,
+  },
+  {
+    path: '/arls-register',
+    name: 'arls-register',
+    component: ArlsRegister
+  },
+  {
+    path: '/arls-update/:id',
+    name: 'arls-update',
+    component: ArlsUpdate
+  },
+  {
+    path: '/education-levels',
+    name: 'education-levels',
+    component: EducationLevels
+  },
+  {
+    path: '/education-levels-register',
+    name: 'education-levels-register',
+    component: EducationLevelsRegister
+  },
+  {
+    path: '/education-levels-update/:id',
+    name: 'education-levels-update',
+    component: EducationLevelsUpdate
+  },
+  {
+    path: '/housing-types',
+    name: 'housing-types',
+    component: HousingTypes
+  },
+  {
+    path: '/housing-types-register',
+    name: 'housing-types-register',
+    component: HousingTypesRegister
+  },
+  {
+    path: '/housing-types-update/:id',
+    name: 'housing-types-update',
+    component: HousingTypesUpdate
+  },
+  {
+    path: '/areas',
+    name: 'areas',
+    component: Areas
+  },
+  {
+    path: '/areas-register',
+    name: 'areas-register',
+    component: AreasRegister
+  },
+  {
+    path: '/areas-update/:id',
+    name: 'areas-update',
+    component: AreasUpdate
+  },
+  {
+    path: '/pensions-fund',
+    name: 'pensions-fund',
+    component: PensionFund
+  },
+  {
+    path: '/pensions-fund-register',
+    name: 'pensions-fund-register',
+    component: PensionFundRegister
+  },
+  {
+    path: '/pensions-fund-update/:id',
+    name: 'pensions-fund-update',
+    component: PensionFundUpdate
+  }
 ]
 
 const router = createRouter({

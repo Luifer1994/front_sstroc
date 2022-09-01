@@ -22,7 +22,22 @@
       $route.name === 'events' ||
       $route.name === 'documents' ||
       $route.name === 'document-register' ||
-      $route.name === 'document-update'
+      $route.name === 'document-update' ||
+      $route.name === 'arls' ||
+      $route.name === 'arls-register' ||
+      $route.name === 'arls-update' ||
+      $route.name === 'education-levels' ||
+      $route.name === 'education-levels-register' ||
+      $route.name === 'education-levels-update' ||
+      $route.name === 'housing-types' ||
+      $route.name === 'housing-types-register' ||
+      $route.name === 'housing-types-update' ||
+      $route.name === 'areas' ||
+      $route.name === 'areas-register' ||
+      $route.name === 'areas-update' ||
+      $route.name === 'pensions-fund' ||
+      $route.name === 'pensions-fund-register' ||
+      $route.name === 'pensions-fund-update'
     "
   ></Nav>
   <div
@@ -48,7 +63,22 @@
       $route.name === 'home' ||
       $route.name === 'documents' ||
       $route.name === 'document-register' ||
-      $route.name === 'document-update'
+      $route.name === 'document-update' ||
+      $route.name === 'arls' ||
+      $route.name === 'arls-register' ||
+      $route.name === 'arls-update' ||
+      $route.name === 'education-levels' ||
+      $route.name === 'education-levels-register' ||
+      $route.name === 'education-levels-update' ||
+      $route.name === 'housing-types' ||
+      $route.name === 'housing-types-register' ||
+      $route.name === 'housing-types-update' ||
+      $route.name === 'areas' ||
+      $route.name === 'areas-register' ||
+      $route.name === 'areas-update' ||
+      $route.name === 'pensions-fund' ||
+      $route.name === 'pensions-fund-register' ||
+      $route.name === 'pensions-fund-update'
     "
     class="container-fluid page-body-wrapper"
   >
