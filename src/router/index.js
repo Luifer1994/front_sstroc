@@ -46,6 +46,16 @@ import PensionFund from '../views/PensionFund/Index.vue'
 import PensionFundRegister from '../views/PensionFund/Register.vue'
 import PensionFundUpdate from '../views/PensionFund/Update.vue'
 
+//countries
+import Countries from '../views/Countries/Index.vue'
+import CountriesRegister from '../views/Countries/Register.vue'
+import CountriesUpdate from '../views/Countries/Update.vue'
+
+//cities
+import Cities from '../views/Cities/Index.vue'
+import CitiesRegister from '../views/Cities/Register.vue'
+import CitiesUpdate from '../views/Cities/Update.vue'
+
 const routes = [
   {
     path: '/',
@@ -246,7 +256,37 @@ const routes = [
     path: '/pensions-fund-update/:id',
     name: 'pensions-fund-update',
     component: PensionFundUpdate
-  }
+  },
+  {
+    path: '/country',
+    name: 'country',
+    component: Countries
+  },
+  {
+    path: '/country-register',
+    name: 'country-register',
+    component: CountriesRegister
+  },
+  {
+    path: '/country-update/:id',
+    name: 'country-update',
+    component: CountriesUpdate
+  },
+  {
+    path: '/cities',
+    name: 'cities',
+    component: Cities
+  },
+  {
+    path: '/cities-register',
+    name: 'cities-register',
+    component: CitiesRegister
+  },
+  {
+    path: '/cities-update/:id',
+    name: 'cities-update',
+    component: CitiesUpdate
+  },
 ]
 
 const router = createRouter({

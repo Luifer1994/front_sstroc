@@ -37,7 +37,13 @@
       $route.name === 'areas-update' ||
       $route.name === 'pensions-fund' ||
       $route.name === 'pensions-fund-register' ||
-      $route.name === 'pensions-fund-update'
+      $route.name === 'pensions-fund-update' ||
+      $route.name === 'country' ||
+      $route.name === 'country-register' ||
+      $route.name === 'country-update' ||
+      $route.name === 'cities' ||
+      $route.name === 'cities-register' ||
+      $route.name === 'cities-update'
     "
   ></Nav>
   <div
@@ -78,7 +84,13 @@
       $route.name === 'areas-update' ||
       $route.name === 'pensions-fund' ||
       $route.name === 'pensions-fund-register' ||
-      $route.name === 'pensions-fund-update'
+      $route.name === 'pensions-fund-update' ||
+      $route.name === 'country' ||
+      $route.name === 'country-register' ||
+      $route.name === 'country-update' ||
+      $route.name === 'cities' ||
+      $route.name === 'cities-register' ||
+      $route.name === 'cities-update'
     "
     class="container-fluid page-body-wrapper"
   >

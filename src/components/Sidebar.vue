@@ -78,6 +78,12 @@
             <li class="nav-item">
               <router-link to="/areas" class="nav-link">Áreas</router-link>
             </li>
+            <li class="nav-item">
+              <router-link to="/country" class="nav-link">Paises</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link to="/cities" class="nav-link">Ciudades</router-link>
+            </li>
           </ul>
         </div>
       </li>
