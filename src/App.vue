@@ -43,7 +43,34 @@
       $route.name === 'country-update' ||
       $route.name === 'cities' ||
       $route.name === 'cities-register' ||
-      $route.name === 'cities-update'
+      $route.name === 'cities-update' ||
+      $route.name === 'marital-status' ||
+      $route.name === 'marital-status-register' ||
+      $route.name === 'marital-status-update' ||
+      $route.name === 'kingdreds' ||
+      $route.name === 'kingdreds-register' ||
+      $route.name === 'kingdreds-update' ||
+      $route.name === 'positions' ||
+      $route.name === 'positions-register' ||
+      $route.name === 'positions-update' ||
+      $route.name === 'proccess' ||
+      $route.name === 'proccess-register' ||
+      $route.name === 'proccess-update' ||
+      $route.name === 'risk-types' ||
+      $route.name === 'risk-types-register' ||
+      $route.name === 'risk-types-update' ||
+      $route.name === 'risks' ||
+      $route.name === 'risks-register' ||
+      $route.name === 'risks-update' ||
+      $route.name === 'document-types' ||
+      $route.name === 'document-types-register' ||
+      $route.name === 'document-types-update' ||
+      $route.name === 'contrac-types' ||
+      $route.name === 'contrac-types-register' ||
+      $route.name === 'contrac-types-update' ||
+      $route.name === 'task' ||
+      $route.name === 'task-register' ||
+      $route.name === 'task-update'
     "
   ></Nav>
   <div
@@ -90,7 +117,34 @@
       $route.name === 'country-update' ||
       $route.name === 'cities' ||
       $route.name === 'cities-register' ||
-      $route.name === 'cities-update'
+      $route.name === 'cities-update' ||
+      $route.name === 'marital-status' ||
+      $route.name === 'marital-status-register' ||
+      $route.name === 'marital-status-update' ||
+      $route.name === 'kingdreds' ||
+      $route.name === 'kingdreds-register' ||
+      $route.name === 'kingdreds-update' ||
+      $route.name === 'positions' ||
+      $route.name === 'positions-register' ||
+      $route.name === 'positions-update' ||
+      $route.name === 'proccess' ||
+      $route.name === 'proccess-register' ||
+      $route.name === 'proccess-update' ||
+      $route.name === 'risk-types' ||
+      $route.name === 'risk-types-register' ||
+      $route.name === 'risk-types-update' ||
+      $route.name === 'risks' ||
+      $route.name === 'risks-register' ||
+      $route.name === 'risks-update' ||
+      $route.name === 'document-types' ||
+      $route.name === 'document-types-register' ||
+      $route.name === 'document-types-update' ||
+      $route.name === 'contrac-types' ||
+      $route.name === 'contrac-types-register' ||
+      $route.name === 'contrac-types-update' ||
+      $route.name === 'task' ||
+      $route.name === 'task-register' ||
+      $route.name === 'task-update'
     "
     class="container-fluid page-body-wrapper"
   >
@@ -101,7 +155,7 @@
     v-if="
       $route.name === 'login' ||
       $route.name === 'identification-risk' ||
-      $route.name === 'cover'
+      $route.name === 'index'
     "
   />
 </template>

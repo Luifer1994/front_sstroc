@@ -7,10 +7,7 @@
             <div class="auth-form-light text-left py-5 px-4 px-sm-5">
               <div class="brand-logo">
                 <div class="my-2 d-flex justify-content-center">
-                  <img
-                    src="../assets/logo.png"
-                    alt="logo"
-                  />
+                  <img src="../assets/logo.png" alt="logo" />
                 </div>
               </div>
 
@@ -22,9 +19,7 @@
                     class="form-control form-control-lg"
                     placeholder="Email"
                   />
-                  <small v-if="errors.email" class="danger">{{
-                    errors.email[0]
-                  }}</small>
+                  <small v-if="errors.email" class="danger">{{ errors.email[0] }}</small>
                 </div>
 
                 <div class="form-group">
@@ -40,11 +35,7 @@
                 </div>
                 <div class="mt-3">
                   <a
-                    class="
-                      btn btn-block btn-primary btn-lg
-                      font-weight-medium
-                      auth-form-btn
-                    "
+                    class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn"
                     @click="login()"
                   >
                     LOGIN
@@ -85,7 +76,7 @@ export default {
         let res = await axios.post(this.urlApi + "user-login", dataUser);
         this.$store.commit("userLogin", res.data.user);
         localStorage.token = res.data.token;
-        this.$router.push("/");
+        this.$router.push("/home");
       } catch (error) {
         const err = error.response.data;
         this.errors = err;

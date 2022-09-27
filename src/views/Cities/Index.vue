@@ -19,6 +19,13 @@
           </div>
 
           <div v-else>
+            <input
+              type="text"
+              class="form-control my-2"
+              v-model="search"
+              placeholder="Buscar por nombre"
+              @keyup="searching()"
+            />
             <div class="table-responsive">
               <table class="table table-striped">
                 <thead>
@@ -96,12 +103,17 @@ export default {
       links: null,
       page: 1,
       limit: 10,
+      search: "",
     };
   },
   mounted() {
     this.getcities();
   },
   methods: {
+    searching() {
+      this.page = 1;
+      this.getcities();
+    },
     cityUpdate(id) {
       this.$router.push({ path: "/cities-update/" + id });
     },
@@ -113,7 +125,12 @@ export default {
         this.page = page;
       }
       const res = await createInstaceAxios.get(
-        "city-list-paginate?limit=" + this.limit + "&page=" + this.page
+        "city-list-paginate?search=" +
+          this.search +
+          "&limit=" +
+          this.limit +
+          "&page=" +
+          this.page
       );
       this.cities = res.data.data.data;
       this.links = res.data.data.links.slice(1, res.data.data.links.length - 1);

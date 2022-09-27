@@ -55,10 +55,52 @@ import CountriesUpdate from '../views/Countries/Update.vue'
 import Cities from '../views/Cities/Index.vue'
 import CitiesRegister from '../views/Cities/Register.vue'
 import CitiesUpdate from '../views/Cities/Update.vue'
+//marital status
+import MaritalStatus from '../views/MaritalStatus/Index.vue'
+import MaritalStatusRegister from '../views/MaritalStatus/Register.vue'
+import MaritalStatusUpdate from '../views/MaritalStatus/Update.vue'
+//kingdreds
+import Kingdreds from '../views/Kingdreds/Index.vue'
+import KingdredsRegister from '../views/Kingdreds/Register.vue'
+import KingdredsUpdate from '../views/Kingdreds/Update.vue'
+//positions
+import Positions from '../views/Positions/Index.vue'
+import PositionsRegister from '../views/Positions/Register.vue'
+import PositionsUpdate from '../views/Positions/Update.vue'
+//proccess
+import Proccess from '../views/Proccess/Index.vue'
+import ProccessRegister from '../views/Proccess/Register.vue'
+import ProccessUpdate from '../views/Proccess/Update.vue'
+
+// risk types
+import RiskTypes from '../views/RiskTypes/Index.vue'
+import RiskTypesRegister from '../views/RiskTypes/Register.vue'
+import RiskTypesUpdate from '../views/RiskTypes/Update.vue'
+//risks
+import Risks from '../views/Risks/Index.vue'
+import RisksRegister from '../views/Risks/Register.vue'
+import RisksUpdate from '../views/Risks/Update.vue'
+//document types
+import DocumentTypes from '../views/DocumentTypes/Index.vue'
+import DocumentTypesRegister from '../views/DocumentTypes/Register.vue'
+import DocumentTypesUpdate from '../views/DocumentTypes/Update.vue'
+// contrac types
+import ContractTypes from '../views/ContractTypes/Index.vue'
+import ContractTypesRegister from '../views/ContractTypes/Register.vue'
+import ContractTypesUpdate from '../views/ContractTypes/Update.vue'
+//task
+import Task from '../views/Task/Index.vue'
+import TaskRegister from '../views/Task/Register.vue'
+import TaskUpdate from '../views/Task/Update.vue'
 
 const routes = [
   {
     path: '/',
+    name: 'index',
+    component: Cover
+  },
+  {
+    path: '/home',
     name: 'home',
     component: Home
   },
@@ -178,11 +220,6 @@ const routes = [
     component: DocumentUpdate
   },
   {
-    path: '/cover',
-    name: 'cover',
-    component: Cover
-  },
-  {
     path: '/arls',
     name: 'arls',
     component: ArlsList,
@@ -287,6 +324,141 @@ const routes = [
     name: 'cities-update',
     component: CitiesUpdate
   },
+  {
+    path: '/marital-status',
+    name: 'marital-status',
+    component: MaritalStatus
+  },
+  {
+    path: '/marital-status-register',
+    name: 'marital-status-register',
+    component: MaritalStatusRegister
+  },
+  {
+    path: '/marital-status-update/:id',
+    name: 'marital-status-update',
+    component: MaritalStatusUpdate
+  },
+  {
+    path: '/kingdreds',
+    name: 'kingdreds',
+    component: Kingdreds
+  },
+  {
+    path: '/kingdreds-register',
+    name: 'kingdreds-register',
+    component: KingdredsRegister
+  },
+  {
+    path: '/kingdreds-update/:id',
+    name: 'kingdreds-update',
+    component: KingdredsUpdate
+  },
+  {
+    path: '/positions',
+    name: 'positions',
+    component: Positions
+  },
+  {
+    path: '/positions-register',
+    name: 'positions-register',
+    component: PositionsRegister
+  },
+  {
+    path: '/positions-update/:id',
+    name: 'positions-update',
+    component: PositionsUpdate
+  },
+  {
+    path: '/proccess',
+    name: 'proccess',
+    component: Proccess
+  },
+  {
+    path: '/proccess-register',
+    name: 'proccess-register',
+    component: ProccessRegister
+  },
+  {
+    path: '/proccess-update/:id',
+    name: 'proccess-update',
+    component: ProccessUpdate
+  },
+  {
+    path: '/risk-types',
+    name: 'risk-types',
+    component: RiskTypes
+  },
+  {
+    path: '/risk-types-register',
+    name: 'risk-types-register',
+    component: RiskTypesRegister
+  },
+  {
+    path: '/risk-types-update/:id',
+    name: 'risk-types-update',
+    component: RiskTypesUpdate
+  },
+  {
+    path: '/risks',
+    name: 'risks',
+    component: Risks
+  },
+  {
+    path: '/risks-register',
+    name: 'risks-register',
+    component: RisksRegister
+  },
+  {
+    path: '/risks-update/:id',
+    name: 'risks-update',
+    component: RisksUpdate
+  },
+  {
+    path: '/document-types', 
+    name: 'document-types',
+    component: DocumentTypes
+  },
+  {
+    path: '/document-types-register',
+    name: 'document-types-register',
+    component: DocumentTypesRegister
+  },
+  {
+    path: '/document-types-update/:id',
+    name: 'document-types-update',
+    component: DocumentTypesUpdate
+  },
+  {
+    path: '/contrac-types',
+    name: 'contrac-types',
+    component: ContractTypes
+  },
+  {
+    path: '/contrac-types-register',
+    name: 'contrac-types-register',
+    component: ContractTypesRegister
+  },
+  {
+    path: '/contrac-types-update/:id',
+    name: 'contrac-types-update',
+    component: ContractTypesUpdate
+  },
+  {
+    path: '/task',
+    name: 'task',
+    component: Task
+  },
+  {
+    path: '/task-register',
+    name: 'task-register',
+    component: TaskRegister
+  },
+  {
+    path: '/task-update/:id',
+    name: 'task-update',
+    component: TaskUpdate
+  }
 ]
 
 const router = createRouter({
@@ -324,7 +496,7 @@ router.beforeEach((to, from, next) => {
   if (isLogin && validateSesion()) {
     next();
   } else {
-    if (to.name === "login" || to.name === "identification-risk" || to.name === "cover") {
+    if (to.name === "login" || to.name === "identification-risk" || to.name === "index") {
       next();
     } else {
       next("login");

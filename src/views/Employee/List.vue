@@ -19,6 +19,13 @@
           </div>
 
           <div v-else>
+            <input
+              type="text"
+              class="form-control my-2"
+              v-model="search"
+              placeholder="Buscar por nombre"
+              @keyup="searching()"
+            />
             <div class="table-responsive">
               <table class="table table-striped">
                 <thead>
@@ -110,12 +117,17 @@ export default {
       links: null,
       page: 1,
       limit: 10,
+      search: "",
     };
   },
   mounted() {
     this.getUsers();
   },
   methods: {
+    searching() {
+      this.page = 1;
+      this.getUsers();
+    },
     employeePerfil(id) {
       this.$router.push({ path: "/employee-perfilate/" + id });
     },
@@ -144,7 +156,12 @@ export default {
         this.page = page;
       }
       const res = await createInstaceAxios.get(
-        "employee-list?limit=" + this.limit + "&page=" + this.page
+        "employee-list?search=" +
+          this.search +
+          "&limit=" +
+          this.limit +
+          "&page=" +
+          this.page
       );
       this.users = res.data.data.data;
       this.links = res.data.data.links.slice(1, res.data.data.links.length - 1);

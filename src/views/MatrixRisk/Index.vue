@@ -4,9 +4,7 @@
       <div class="card">
         <div class="card-body">
           <h4 class="card-title">Matrices de peligro</h4>
-          <router-link
-            to="/matrix-risk-register"
-            class="btn btn-primary text-right"
+          <router-link to="/matrix-risk-register" class="btn btn-primary text-right"
             >Crear nuevo matriz</router-link
           >
           <div v-if="!matrix" class="d-flex justify-content-center mt-4">
@@ -19,6 +17,13 @@
             </div>
           </div>
           <div v-else>
+            <input
+              type="text"
+              class="form-control my-2"
+              v-model="search"
+              placeholder="Buscar por cualquier campo de la tabla"
+              @keyup="searching()"
+            />
             <div class="table-responsive">
               <table class="table table-striped">
                 <thead>
@@ -77,8 +82,8 @@
                     </td>
 
                     <td>
-                      <router-link 
-                      :to="{
+                      <router-link
+                        :to="{
                           name: 'matrix-risk-detail',
                           params: { id: item.id },
                         }"
@@ -88,19 +93,19 @@
                         <i class="fa fa-eye" aria-hidden="true"></i>
                       </router-link>
                       <router-link
-                      :to="{
+                        :to="{
                           name: 'matrix-risk-evaluate',
                           params: { id: item.id },
                         }"
                         class="btn btn-danger btn-sm mr-1"
                         title="Crear seguimiento"
                         :class="{
-                          'disabled': item.evaluate_matrices_count,
+                          disabled: item.evaluate_matrices_count,
                         }"
                       >
                         <i class="fa fa-flag" aria-hidden="true"></i>
                       </router-link>
-                     <!--  <router-link
+                      <!--  <router-link
                       :to="{
                           name: 'matrix-risk-evaluate-detail',
                           params: { id: item.id },
@@ -154,12 +159,17 @@ export default {
       links: null,
       page: 1,
       limit: 10,
+      search: "",
     };
   },
   mounted() {
     this.getFindings();
   },
   methods: {
+    searching() {
+      this.page = 1;
+      this.getFindings();
+    },
     async getFindings(limit = null, page = null) {
       if (limit) {
         this.limit = limit;
@@ -168,7 +178,12 @@ export default {
         this.page = page;
       }
       const res = await createInstaceAxios.get(
-        "matrix-ris-list?limit=" + this.limit + "&page=" + this.page
+        "matrix-ris-list?search=" +
+          this.search +
+          "&limit=" +
+          this.limit +
+          "&page=" +
+          this.page
       );
       this.matrix = res.data.data.data;
       this.links = res.data.data.links.slice(1, res.data.data.links.length - 1);

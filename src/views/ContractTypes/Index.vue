@@ -3,12 +3,12 @@
     <div class="content-wrapper table-responsive">
       <div class="card">
         <div class="card-body">
-          <h4 class="card-title">Áreas</h4>
-          <router-link to="/areas-register" class="btn btn-primary text-right"
-            >Registrar área</router-link
+          <h4 class="card-title">Tipos de contrato</h4>
+          <router-link to="/contrac-types-register" class="btn btn-primary text-right"
+            >Registrar tipo de contrato</router-link
           >
 
-          <div v-if="!areas" class="d-flex justify-content-center mt-4">
+          <div v-if="!contractTypes" class="d-flex justify-content-center mt-4">
             <div
               class="spinner-border text-primary"
               style="width: 100px; height: 100px"
@@ -37,19 +37,22 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr v-for="area in areas" :key="area.id">
-                    <td>{{ area.id }}</td>
-                    <td>{{ area.name }}</td>
-                    <td>{{ formatDate(area.created_at) }}</td>
+                  <tr v-for="contracType in contractTypes" :key="contracType.id">
+                    <td>{{ contracType.id }}</td>
+                    <td>{{ contracType.name }}</td>
+                    <td>{{ formatDate(contracType.created_at) }}</td>
                     <td>
-                      <button @click="areaUpdate(area.id)" class="btn btn-warning btn-sm">
+                      <button
+                        @click="contracTypeUpdate(contracType.id)"
+                        class="btn btn-warning btn-sm"
+                      >
                         <img
                           style="width: 20px; height: 20px"
                           src="https://img.icons8.com/external-tanah-basah-detailed-outline-tanah-basah/48/000000/external-edit-user-interface-tanah-basah-detailed-outline-tanah-basah-2.png"
                         />
                       </button>
                       <button
-                        @click="showAlert(area.id)"
+                        @click="showAlert(contracType.id)"
                         class="btn btn-danger mx-1 btn-sm"
                       >
                         <img
@@ -94,10 +97,10 @@
 import { createInstaceAxios } from "../../utils/instance";
 import moment from "moment";
 export default {
-  name: "areas",
+  name: "contractTypes",
   data() {
     return {
-      areas: null,
+      contractTypes: null,
       links: null,
       page: 1,
       limit: 10,
@@ -105,17 +108,17 @@ export default {
     };
   },
   mounted() {
-    this.getareas();
+    this.getcontractTypes();
   },
   methods: {
-    areaUpdate(id) {
-      this.$router.push({ path: "/areas-update/" + id });
-    },
     searching() {
       this.page = 1;
-      this.getareas();
+      this.getcontractTypes();
     },
-    async getareas(limit = null, page = null) {
+    contracTypeUpdate(id) {
+      this.$router.push({ path: "/contrac-types-update/" + id });
+    },
+    async getcontractTypes(limit = null, page = null) {
       if (limit) {
         this.limit = limit;
       }
@@ -123,18 +126,18 @@ export default {
         this.page = page;
       }
       const res = await createInstaceAxios.get(
-        "areas-list-paginate?search=" +
+        "type-contract-list-paginate?search=" +
           this.search +
           "&limit=" +
           this.limit +
           "&page=" +
           this.page
       );
-      this.areas = res.data.data.data;
+      this.contractTypes = res.data.data.data;
       this.links = res.data.data.links.slice(1, res.data.data.links.length - 1);
     },
     next(num) {
-      this.getareas(this.limit, num);
+      this.getcontractTypes(this.limit, num);
     },
     formatDate(value) {
       moment.locale("es");
@@ -147,7 +150,7 @@ export default {
       console.log(id);
       this.$swal({
         title: "¿Estas seguro que quieres eliminar este registro?",
-        text: "Al eliminarlo no podrás volver atras!",
+        text: "Al elimincontracTypeo no podrás volver atras!",
         icon: "warning",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
@@ -160,9 +163,9 @@ export default {
         }
       });
     },
-    //detele arl from database and show success message
+    //detele contracType from database and show success message
     async delete(id) {
-      const res = await createInstaceAxios.delete("area-delete/" + id);
+      const res = await createInstaceAxios.delete("type-contract-delete/" + id);
       this.$swal({
         title: "Eliminado!",
         text: "El registro ha sido eliminado correctamente.",
@@ -170,7 +173,7 @@ export default {
         timer: 2000,
         showConfirmButton: false,
       });
-      this.getareas();
+      this.getcontractTypes();
     },
   },
 };

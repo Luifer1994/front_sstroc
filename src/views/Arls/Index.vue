@@ -19,6 +19,13 @@
           </div>
 
           <div v-else>
+            <input
+              type="text"
+              class="form-control my-2"
+              v-model="search"
+              placeholder="Buscar por nombre"
+              @keyup="searching()"
+            />
             <div class="table-responsive">
               <table class="table table-striped">
                 <thead>
@@ -94,12 +101,17 @@ export default {
       links: null,
       page: 1,
       limit: 10,
+      search: "",
     };
   },
   mounted() {
     this.getarls();
   },
   methods: {
+    searching() {
+      this.page = 1;
+      this.getarls();
+    },
     arlUpdate(id) {
       this.$router.push({ path: "/arls-update/" + id });
     },
@@ -111,7 +123,12 @@ export default {
         this.page = page;
       }
       const res = await createInstaceAxios.get(
-        "arl-list-paginate?limit=" + this.limit + "&page=" + this.page
+        "arl-list-paginate?search=" +
+          this.search +
+          "&limit=" +
+          this.limit +
+          "&page=" +
+          this.page
       );
       this.arls = res.data.data.data;
       this.links = res.data.data.links.slice(1, res.data.data.links.length - 1);

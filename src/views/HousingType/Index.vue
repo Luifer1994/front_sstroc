@@ -19,6 +19,13 @@
           </div>
 
           <div v-else>
+            <input
+              type="text"
+              class="form-control my-2"
+              v-model="search"
+              placeholder="Buscar por nombre"
+              @keyup="searching()"
+            />
             <div class="table-responsive">
               <table class="table table-striped">
                 <thead>
@@ -97,12 +104,17 @@ export default {
       links: null,
       page: 1,
       limit: 10,
+      search: "",
     };
   },
   mounted() {
     this.gethousingType();
   },
   methods: {
+    searching() {
+      this.page = 1;
+      this.gethousingType();
+    },
     housingTypeUpdate(id) {
       this.$router.push({ path: "/housing-types-update/" + id });
     },
@@ -114,7 +126,12 @@ export default {
         this.page = page;
       }
       const res = await createInstaceAxios.get(
-        "housing-types-list-paginate?limit=" + this.limit + "&page=" + this.page
+        "housing-types-list-paginate?search=" +
+          this.search +
+          "&limit=" +
+          this.limit +
+          "&page=" +
+          this.page
       );
       this.housingType = res.data.data.data;
       this.links = res.data.data.links.slice(1, res.data.data.links.length - 1);

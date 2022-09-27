@@ -8,7 +8,7 @@
     <header class="header_section">
       <div class="container">
         <nav class="navbar navbar-expand-lg custom_nav-container">
-          <a class="navbar-brand p-2" href="index.html">
+          <a class="navbar-brand p-2" href="#">
             <img
               style="max-width: 50px; min-width: 50px"
               src="../../assets/logo.png"
@@ -36,7 +36,9 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link" style="font-weight: bold" href="about.html"> LOGIN</a>
+                <router-link to="/login" class="nav-link" style="font-weight: bold">
+                  LOGIN</router-link
+                >
               </li>
             </ul>
           </div>
@@ -53,16 +55,23 @@
               <div class="row">
                 <div class="col-md-7">
                   <div class="detail-box">
-                    <h1>We Provide Best Healthcare</h1>
+                    <h1>Radioterapia</h1>
                     <p>
-                      Explicabo esse amet tempora quibusdam laudantium, laborum eaque
-                      magnam fugiat hic? Esse dicta aliquid error repudiandae earum
-                      suscipit fugiat molestias, veniam, vel architecto veritatis delectus
-                      repellat modi impedit sequi.
+                      La radioterapia externa hace uso de rayos X de alta energía para
+                      dañar el ADN de las células cancerosas y destruir su capacidad para
+                      dividirse y crecer, esto se logra mediante una máquina llamada
+                      acelerador lineal, que es capaz de crear el haz de radiación y a
+                      través de un sistema de multiláminas ajustar el tamaño y la forma
+                      del haz, lo que permite dirigirlo de modo que la dosis de radiación
+                      incida en el volumen tumoral de la forma más precisa posible para
+                      reducir al máximo los efectos secundarios y evitar el daño a las
+                      células normales adyacentes; esto se logra mediante imágenes que nos
+                      permiten determinar la forma y la ubicación exacta de su tumor y
+                      definir sus límites.
                     </p>
-                    <div class="btn-box">
+                    <!-- <div class="btn-box">
                       <a href="" class="btn1"> Read More </a>
-                    </div>
+                    </div> -->
                   </div>
                 </div>
               </div>
@@ -73,16 +82,22 @@
               <div class="row">
                 <div class="col-md-7">
                   <div class="detail-box">
-                    <h1>We Provide Best Healthcare</h1>
+                    <h1>Quimioterapia</h1>
                     <p>
-                      Explicabo esse amet tempora quibusdam laudantium, laborum eaque
-                      magnam fugiat hic? Esse dicta aliquid error repudiandae earum
-                      suscipit fugiat molestias, veniam, vel architecto veritatis delectus
-                      repellat modi impedit sequi.
+                      El Centro Radio Oncológico Del Caribe SAS. Dispone de amplias salas
+                      de Quimioterapia con aire acondicionado, sillas reclinables y el
+                      mejor confort para realizar la administración de los medicamentos a
+                      nuestros pacientes.
                     </p>
-                    <div class="btn-box">
-                      <a href="" class="btn1"> Read More </a>
-                    </div>
+                    <br />
+                    <p>
+                      Equipada con las especificaciones técnicas y altos estándares de
+                      bioseguridad para garantizar la mejor atención al paciente. Las
+                      Salas de Quimioterapia cuentan con el soporte de los especialistas
+                      en Oncología Clínica y Hemato – Oncología con el apoyo de personal
+                      especializado de enfermería y central de mezclas para la
+                      dispensación de los medicamentos.
+                    </p>
                   </div>
                 </div>
               </div>
@@ -93,16 +108,18 @@
               <div class="row">
                 <div class="col-md-7">
                   <div class="detail-box">
-                    <h1>We Provide Best Healthcare</h1>
+                    <h1>Servicios Farmacéuticos</h1>
                     <p>
-                      Explicabo esse amet tempora quibusdam laudantium, laborum eaque
-                      magnam fugiat hic? Esse dicta aliquid error repudiandae earum
-                      suscipit fugiat molestias, veniam, vel architecto veritatis delectus
-                      repellat modi impedit sequi.
+                      En el Centro Radioncologico del Caribe S.A.S contamos con una
+                      Central de Mezclas certificada por el INVIMA en el cumplimiento de
+                      buenas prácticas de elaboración. Ofrecemos el servicio de
+                      dispensación de medicamentos oncológicos y especializados.
+                      Adecuación y ajustes de dosis de medicamentos oncológicos. Programa
+                      de adherencia a tratamientos a través de asesoría farmacológica.
+                      Seguimientos farmacoterapéuticos a pacientes en tratamientos, Envío
+                      de Tratamiento Domiciliario oral. Aplicación de medicamentos
+                      Domiciliarios.
                     </p>
-                    <div class="btn-box">
-                      <a href="" class="btn1"> Read More </a>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -253,7 +270,7 @@ a:focus {
 
 .sub_page .hero_area {
   min-height: auto;
-  background-color: #178066;
+  background-color: #175d80;
 }
 
 .sub_page .hero_area .hero_bg_box {
@@ -303,7 +320,7 @@ a:focus {
 }
 
 .custom_nav-container .nav_search-btn:hover {
-  color: #62d2a2;
+  color: #62b4d2;
 }
 
 .custom_nav-container .navbar-toggler {

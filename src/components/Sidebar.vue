@@ -2,7 +2,7 @@
   <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <ul class="nav">
       <li class="nav-item">
-        <router-link to="/" class="nav-link">
+        <router-link to="/home" class="nav-link">
           <i class="fa fa-home mx-2" aria-hidden="true"></i>
           <span class="menu-title">Home</span>
         </router-link>
@@ -83,6 +83,39 @@
             </li>
             <li class="nav-item">
               <router-link to="/cities" class="nav-link">Ciudades</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link to="/marital-status" class="nav-link"
+                >Estados civiles</router-link
+              >
+            </li>
+            <li class="nav-item">
+              <router-link to="/kingdreds" class="nav-link">Parentescos</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link to="/positions" class="nav-link">Cargos</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link to="/proccess" class="nav-link">Procesos</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link to="/risk-types" class="nav-link">Tipos de riesgo</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link to="/risks" class="nav-link">Riesgos</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link to="/document-types" class="nav-link"
+                >Tipos de documento</router-link
+              >
+            </li>
+            <li class="nav-item">
+              <router-link to="/contrac-types" class="nav-link"
+                >Tipos de contrato</router-link
+              >
+            </li>
+            <li class="nav-item">
+              <router-link to="/task" class="nav-link">Tareas</router-link>
             </li>
           </ul>
         </div>

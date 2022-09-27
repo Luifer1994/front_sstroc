@@ -4,9 +4,7 @@
       <div class="card">
         <div class="card-body">
           <h4 class="card-title">Hallazgos</h4>
-          <router-link
-            to="/findings-register"
-            class="btn btn-primary text-right"
+          <router-link to="/findings-register" class="btn btn-primary text-right"
             >Crear nuevo hallazgo</router-link
           >
           <div v-if="!findings" class="d-flex justify-content-center mt-4">
@@ -19,6 +17,13 @@
             </div>
           </div>
           <div v-else>
+            <input
+              type="text"
+              class="form-control my-2"
+              v-model="search"
+              placeholder="Buscar por nombre"
+              @keyup="searching()"
+            />
             <div class="table-responsive">
               <table class="table table-striped">
                 <thead>
@@ -58,9 +63,7 @@
                       <span v-else class="badge badge-danger"> CERRADO</span>
                     </td>
                     <td>
-                      <vue-picture-swipe
-                        :items="media[index]"
-                      ></vue-picture-swipe>
+                      <vue-picture-swipe :items="media[index]"></vue-picture-swipe>
                     </td>
                     <td>
                       <router-link
@@ -73,18 +76,14 @@
                         <i class="fas fa-clipboard-list"></i>
                       </router-link>
                       <button
-                      v-if="finding.status"
+                        v-if="finding.status"
                         @click="showAlert(finding.id)"
                         class="btn btn-danger btn-sm"
                       >
                         <i class="fas fa-lock"></i>
                       </button>
 
-                       <button
-                       v-else
-                       disabled
-                        class="btn btn-danger btn-sm"
-                      >
+                      <button v-else disabled class="btn btn-danger btn-sm">
                         <i class="fas fa-lock"></i>
                       </button>
                     </td>
@@ -135,6 +134,7 @@ export default {
       links: null,
       page: 1,
       limit: 10,
+      search: "",
       media: [],
     };
   },
@@ -142,6 +142,10 @@ export default {
     this.getFindings();
   },
   methods: {
+    searching() {
+      this.page = 1;
+      (this.media = []), this.getFindings();
+    },
     async getFindings(limit = null, page = null) {
       if (limit) {
         this.limit = limit;
@@ -150,7 +154,12 @@ export default {
         this.page = page;
       }
       const res = await createInstaceAxios.get(
-        "finding-list?limit=" + this.limit + "&page=" + this.page
+        "finding-list?search=" +
+          this.search +
+          "&limit=" +
+          this.limit +
+          "&page=" +
+          this.page
       );
       this.findings = res.data.data.data;
       let num = 0;
@@ -179,7 +188,7 @@ export default {
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
         confirmButtonText: "Si, cerrar!",
-        cancelButtonText:"Cancelar"
+        cancelButtonText: "Cancelar",
       }).then((result) => {
         if (result.isConfirmed) {
           this.closed(id);
