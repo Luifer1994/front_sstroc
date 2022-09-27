@@ -33,7 +33,7 @@
                     <th>ID</th>
                     <th>NOMBRE</th>
                     <th>TIPO DE RIESGO</th>
-                    <th>FECHA_DE_CREACIÓN</th>
+                    <th>FECHA DE CREACIÓN</th>
                     <th>ACCIONES</th>
                   </tr>
                 </thead>

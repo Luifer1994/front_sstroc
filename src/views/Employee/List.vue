@@ -31,9 +31,9 @@
                 <thead>
                   <tr>
                     <th>ID</th>
-                    <th>TIPO_DOCUMENTO</th>
-                    <th>NÚMERO_DE_DOCUMENTO</th>
-                    <th>NOMBRE_Y_APELLIDOS</th>
+                    <th>TIPO DOCUMENTO</th>
+                    <th>NÚMERO DE DOCUMENTO</th>
+                    <th>NOMBRE Y APELLIDOS</th>
                     <th>TELÉFONO</th>
                     <th>EMAIL</th>
                     <th>GÉNERO</th>

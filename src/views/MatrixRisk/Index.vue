@@ -34,7 +34,7 @@
                     <th>AREA</th>
                     <th>TAREA</th>
                     <th>RIESGO</th>
-                    <th>FECHA_CREACIÓN</th>
+                    <th>FECHA DE CREACIÓN</th>
                     <th>CLASIFICACIÓN</th>
                     <th>ACCIONES</th>
                   </tr>

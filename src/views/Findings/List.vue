@@ -32,7 +32,7 @@
                     <th>DESCRIPCIÓN</th>
                     <th>CREADO POR</th>
                     <th>AREA</th>
-                    <th>FECHA_CREACIÓN</th>
+                    <th>FECHA DE CREACIÓN</th>
                     <th>ESTADO</th>
                     <th>EVIDENCIAS</th>
                     <th>ACCIONES</th>
