@@ -100,11 +100,12 @@
                         class="btn btn-danger btn-sm mr-1"
                         title="Crear seguimiento"
                         :class="{
-                          disabled: item.evaluate_matrices_count,
+                          disabled: parseInt(item.evaluate_matrices_count) > 0,
                         }"
                       >
                         <i class="fa fa-flag" aria-hidden="true"></i>
                       </router-link>
+                      {{ item.evaluate_matrices_count }}
                       <!--  <router-link
                       :to="{
                           name: 'matrix-risk-evaluate-detail',
