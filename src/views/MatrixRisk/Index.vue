@@ -105,17 +105,6 @@
                       >
                         <i class="fa fa-flag" aria-hidden="true"></i>
                       </router-link>
-                      {{ item.evaluate_matrices_count }}
-                      <!--  <router-link
-                      :to="{
-                          name: 'matrix-risk-evaluate-detail',
-                          params: { id: item.id },
-                        }"
-                        class="btn btn-success btn-sm mr-1"
-                        title="Evaluar"
-                      >
-                        <i class="fa fa-check-circle" aria-hidden="true"></i>
-                      </router-link> -->
                     </td>
                   </tr>
                 </tbody>
