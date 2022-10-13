@@ -36,6 +36,15 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav">
               <li class="nav-item">
+                <router-link
+                  to="/identification-risk"
+                  class="nav-link"
+                  style="font-weight: bold"
+                >
+                  ENCUESTA</router-link
+                >
+              </li>
+              <li class="nav-item">
                 <router-link to="/login" class="nav-link" style="font-weight: bold">
                   LOGIN</router-link
                 >
